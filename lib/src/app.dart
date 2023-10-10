@@ -1,6 +1,5 @@
 import 'package:dikara_core/dikara_core.dart' hide AppRouter;
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:report_book/src/presentation/routers/router.dart';
 
@@ -9,24 +8,21 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: const [],
-      child: ScreenUtilInit(
-        useInheritedMediaQuery: true,
-        designSize: const Size(428, 926),
-        builder: (_, child) => MaterialApp.router(
-          routerConfig: inject<AppRouter>().config(),
-          title: 'Buku Penghubung',
-          theme: GoTheme.lightTheme(),
-          darkTheme: GoTheme.lightTheme(),
-          debugShowCheckedModeBanner: false,
-          builder: (context, child) {
-            return MediaQuery(
-              data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
-              child: child!,
-            );
-          },
-        ),
+    return ScreenUtilInit(
+      useInheritedMediaQuery: true,
+      designSize: const Size(428, 926),
+      builder: (_, child) => MaterialApp.router(
+        routerConfig: inject<AppRouter>().config(),
+        title: 'Buku Penghubung',
+        theme: GoTheme.lightTheme(),
+        darkTheme: GoTheme.lightTheme(),
+        debugShowCheckedModeBanner: false,
+        builder: (context, child) {
+          return MediaQuery(
+            data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+            child: child!,
+          );
+        },
       ),
     );
   }

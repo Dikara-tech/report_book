@@ -8,12 +8,13 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:dikara_core/dikara_core.dart' as _i5;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
-import 'package:report_book_core/report_book_core.dart' as _i3;
+import 'package:report_book_core/report_book_core.dart' as _i4;
 
-import '../presentation/routers/router.dart' as _i4;
-import 'modules/internal_module.dart' as _i5;
+import '../presentation/routers/router.dart' as _i3;
+import 'modules/internal_module.dart' as _i6;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -26,13 +27,14 @@ extension GetItInjectableX on _i1.GetIt {
       environment,
       environmentFilter,
     );
-    await _i3.ReportBookCorePackageModule().init(gh);
     final internalModule = _$InternalModule();
-    gh.lazySingleton<_i4.AppRouter>(() => internalModule.appRouter);
-    gh.lazySingleton<_i4.AuthGuard>(
-        () => _i4.AuthGuard(gh<_i3.AuthenticationRepository>()));
+    gh.lazySingleton<_i3.AppRouter>(() => internalModule.appRouter);
+    gh.lazySingleton<_i3.AuthGuard>(
+        () => _i3.AuthGuard(gh<_i4.AuthenticationRepository>()));
+    await _i4.ReportBookCorePackageModule().init(gh);
+    await _i5.DikaraCorePackageModule().init(gh);
     return this;
   }
 }
 
-class _$InternalModule extends _i5.InternalModule {}
+class _$InternalModule extends _i6.InternalModule {}

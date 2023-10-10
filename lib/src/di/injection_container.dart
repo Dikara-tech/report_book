@@ -1,4 +1,4 @@
-import 'package:get_it/get_it.dart';
+import 'package:dikara_core/dikara_core.dart';
 import 'package:injectable/injectable.dart';
 import 'package:report_book/src/di/injection_container.config.dart';
 import 'package:report_book_core/report_book_core.dart';
@@ -24,8 +24,9 @@ final inject = GetIt.instance;
 @InjectableInit(
   includeMicroPackages: true,
   preferRelativeImports: true,
-  externalPackageModulesBefore: [
+  externalPackageModulesAfter: [
     ExternalModule(ReportBookCorePackageModule),
+    ExternalModule(DikaraCorePackageModule),
   ],
 )
 Future<void> configureDependencies({
