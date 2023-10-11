@@ -84,3 +84,4 @@ app.*.map.json
 /lib/firebase_options.dart
 .fvm/
 .idea/
+*.iml
