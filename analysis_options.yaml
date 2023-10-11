@@ -53,7 +53,7 @@ dart_code_metrics:
     - always-remove-listener
     - avoid-border-all
     - avoid-returning-widgets
-    - avoid-unnecessary-setstate
+    - avoid-unnecessary-set-state
     - avoid-wrapping-in-padding
     - check-for-equals-in-render-object-setters
     - consistent-update-render-object
