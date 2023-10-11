@@ -1,69 +1,11 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:injectable/injectable.dart';
-import 'package:report_book/src/app.dart';
 import 'package:report_book/src/di/injection_container.dart';
-import 'package:report_book/src/presentation/features/features.dart';
 import 'package:report_book_core/report_book_core.dart';
 
+import '../features/login/login_screen_page.dart';
+
 part 'router.gr.dart';
-
-@AutoRouterConfig(replaceInRouteName: 'Page,Router')
-class AppRouter extends _$AppRouter {
-  @override
-  RouteType get defaultRouteType => const RouteType.material();
-
-  @override
-  final List<AutoRoute> routes = [
-    AutoRoute(
-      path: '/main',
-      page: MainScopeRouter.page,
-      maintainState: true,
-      children: [
-        AutoRoute(
-          path: 'home',
-          page: MainRouter.page,
-          children: [
-            AutoRoute(
-              path: '',
-              page: AnnouncementRouter.page,
-              initial: true,
-            ),
-            AutoRoute(
-              path: 'message-list',
-              page: MessageListRouter.page,
-            ),
-            AutoRoute(
-              path: 'assignment-list',
-              page: AssignmentListRouter.page,
-            ),
-            AutoRoute(
-              path: 'recitation-list',
-              page: RecitationListRouter.page,
-            ),
-            AutoRoute(
-              path: 'profile',
-              page: ProfileRouter.page,
-              maintainState: true,
-            ),
-          ],
-        ),
-      ],
-    ),
-
-    /// Authentication
-    AutoRoute(
-      guards: [inject<AuthGuard>()],
-      path: '/',
-      initial: true,
-      page: LoginRouter.page,
-    ),
-
-    // AutoRoute(
-    //   path: '/success',
-    //   page: SuccessRouter.page,
-    // ),
-  ];
-}
 
 @lazySingleton
 class AuthGuard extends AutoRouteGuard {
@@ -81,8 +23,52 @@ class AuthGuard extends AutoRouteGuard {
     if (!isLoggedIn) {
       resolver.next(true);
     } else {
-      await router.push(const MainScopeRouter());
+      //await router.push(const MainScopeRouter());
       resolver.next(false);
     }
   }
+}
+
+@AutoRouterConfig(replaceInRouteName: 'Page,Router')
+class AppRouter extends _$AppRouter {
+  @override
+  RouteType get defaultRouteType => const RouteType.material();
+
+  @override
+  final List<AutoRoute> routes = [
+    AutoRoute(
+      guards: [inject<AuthGuard>()],
+      path: '/',
+      initial: true,
+      page: LoginScreenRouter.page,
+    ),
+    AutoRoute(
+      page: AnnouncementDetailScreenRouter.page,
+      path: '/annoucement-detail',
+    ),
+    AutoRoute(
+      page: ChatDetailScreenRouter.page,
+      path: '/chat-detail',
+    ),
+    AutoRoute(
+      page: CreateTaskMemoizationScreenRouter.page,
+      path: '/create-task-memoization',
+    ),
+    AutoRoute(
+      page: CreateAnnouncementScreenRouter.page,
+      path: '/create-annoucement',
+    ),
+    AutoRoute(
+      page: CreateTaskScreenRouter.page,
+      path: '/create-task',
+    ),
+    AutoRoute(
+      page: RegisterStudentScreenRouter.page,
+      path: '/register-student',
+    ),
+    AutoRoute(
+      page: HomeScreenPage.page,
+      path: '/home',
+    )
+  ];
 }
