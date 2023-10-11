@@ -14,31 +14,25 @@ import 'package:report_book/src/config/config.dart';
 import 'package:report_book/src/di/injection_container.dart';
 
 void main() async {
-  // Make sure all is initialized before we configure everything.
-  final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
-
-  // Theme.
-  await SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
-  await SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await Future.wait([
+    initializeDateFormatting('id_ID', null),
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge),
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]),
+    configureDependencies(
+      environmentFilter: NoEnvOrContainsAny(
+        {
+          Config.buildVariant,
+          Platform.operatingSystem,
+        },
+      ),
+    )
   ]);
+
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: Colors.transparent,
   ));
-
-  // Dependencies.
-  // HttpOverrides.global = IsrgOverrides();
-  await configureDependencies(
-    environmentFilter: NoEnvOrContainsAny(
-      {
-        Config.buildVariant,
-        Platform.operatingSystem,
-      },
-    ),
-  );
-
-  // Timezone and TimeFormat
-  await initializeDateFormatting('id_ID', null);
   Intl.defaultLocale = 'id_ID';
 
   // Logging
@@ -49,11 +43,6 @@ void main() async {
   } else {
     Fimber.plantTree(dkr.CrashlyticsTree());
   }
-
-  // Firebase
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
 
   runApp(const MainApp());
 }
