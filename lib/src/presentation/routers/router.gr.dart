@@ -57,7 +57,7 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const CreateTaskScreenPage(),
       );
     },
-    HomeScreenPage.name: (routeData) {
+    HomeScreenRouter.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const HomeScreenPage(),
@@ -87,10 +87,10 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const StudentsScreenPage(),
       );
     },
-    TaskMemoization.name: (routeData) {
+    TaskMemoizationScreenRouter.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const TaskMemoization(),
+        child: const TaskMemoizationScreenPage(),
       );
     },
     TaskScreenRouter.name: (routeData) {
@@ -202,14 +202,14 @@ class CreateTaskScreenRouter extends PageRouteInfo<void> {
 
 /// generated route for
 /// [HomeScreenPage]
-class HomeScreenPage extends PageRouteInfo<void> {
-  const HomeScreenPage({List<PageRouteInfo>? children})
+class HomeScreenRouter extends PageRouteInfo<void> {
+  const HomeScreenRouter({List<PageRouteInfo>? children})
       : super(
-          HomeScreenPage.name,
+          HomeScreenRouter.name,
           initialChildren: children,
         );
 
-  static const String name = 'HomeScreenPage';
+  static const String name = 'HomeScreenRouter';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
@@ -271,15 +271,15 @@ class StudentsScreenRouter extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [TaskMemoization]
-class TaskMemoization extends PageRouteInfo<void> {
-  const TaskMemoization({List<PageRouteInfo>? children})
+/// [TaskMemoizationScreenPage]
+class TaskMemoizationScreenRouter extends PageRouteInfo<void> {
+  const TaskMemoizationScreenRouter({List<PageRouteInfo>? children})
       : super(
-          TaskMemoization.name,
+          TaskMemoizationScreenRouter.name,
           initialChildren: children,
         );
 
-  static const String name = 'TaskMemoization';
+  static const String name = 'TaskMemoizationScreenRouter';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
