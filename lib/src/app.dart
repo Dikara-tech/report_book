@@ -13,8 +13,8 @@ class MainApp extends StatelessWidget {
       builder: (_, child) => MaterialApp.router(
         routerConfig: inject<AppRouter>().config(),
         title: 'Buku Penghubung',
-        theme: GoTheme.lightTheme(),
-        darkTheme: GoTheme.lightTheme(),
+        theme: GoTheme.lightTheme().copyWith(useMaterial3: true),
+        darkTheme: GoTheme.lightTheme().copyWith(useMaterial3: true),
         debugShowCheckedModeBanner: false,
         builder: (context, child) {
           return MediaQuery(
