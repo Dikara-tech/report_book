@@ -1,7 +1,7 @@
 import 'package:dikara_core/dikara_core.dart';
 import 'package:flutter/material.dart';
 
-@RoutePage(name: 'HomeScreenPage')
+@RoutePage()
 class HomeScreenPage extends StatelessWidget {
   const HomeScreenPage({super.key});
 

@@ -2,8 +2,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage()
-class TaskMemoization extends StatelessWidget {
-  const TaskMemoization({super.key});
+class TaskMemoizationScreenPage extends StatelessWidget {
+  const TaskMemoizationScreenPage({super.key});
 
   @override
   Widget build(BuildContext context) {
