@@ -12,6 +12,7 @@ import 'package:report_book/src/presentation/features/login/login_screen_page.da
 import 'package:report_book/src/presentation/features/profile/profile_screen_page.dart';
 import 'package:report_book/src/presentation/features/register_student/register_student_screen_page.dart';
 import 'package:report_book/src/presentation/features/students/student_screen_page.dart';
+import 'package:report_book/src/presentation/features/task_detail/task_detail_screen_page.dart';
 import 'package:report_book/src/presentation/features/tasks/tasks_screen_page.dart';
 import 'package:report_book_core/report_book_core.dart';
 
@@ -87,6 +88,10 @@ class AppRouter extends _$AppRouter {
     AutoRoute(
       page: ProfileScreenRouter.page,
       path: '/profile',
+    ),
+    AutoRoute(
+      page: TaskDetailScreenRouter.page,
+      path: '/task-detail',
     )
   ];
 }
