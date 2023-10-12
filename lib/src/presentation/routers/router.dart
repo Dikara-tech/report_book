@@ -10,7 +10,7 @@ import 'package:report_book/src/presentation/features/create_task/create_task_sc
 import 'package:report_book/src/presentation/features/home/home_screen_page.dart';
 import 'package:report_book/src/presentation/features/login/login_screen_page.dart';
 import 'package:report_book/src/presentation/features/profile/profile_screen_page.dart';
-import 'package:report_book/src/presentation/features/register_student/register_student.dart';
+import 'package:report_book/src/presentation/features/register_student/register_student_screen_page.dart';
 import 'package:report_book/src/presentation/features/students/student_screen_page.dart';
 import 'package:report_book/src/presentation/features/tasks/tasks_screen_page.dart';
 import 'package:report_book_core/report_book_core.dart';
