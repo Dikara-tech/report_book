@@ -14,8 +14,8 @@ class HomeScreenPage extends StatelessWidget {
       routes: const [
         StudentsScreenRouter(),
         ChatScreenRouter(),
-        AnnouncementScreenRouter(),
         TaskScreenRouter(),
+        AnnouncementScreenRouter(),
         ProfileScreenRouter()
       ],
       transitionBuilder: (context, child, animation) => FadeTransition(
