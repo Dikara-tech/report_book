@@ -7,12 +7,14 @@ class CustomTextFieldWidget extends StatelessWidget {
     this.hintText,
     this.errorText,
     this.onChange,
+    this.maxLines = 1,
   });
 
   final TextEditingController? textEditingController;
   final String? hintText;
   final String? errorText;
   final ValueChanged<String>? onChange;
+  final int maxLines;
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +23,7 @@ class CustomTextFieldWidget extends StatelessWidget {
     return TextField(
       controller: textEditingController,
       onChanged: onChange,
+      maxLines: maxLines,
       decoration: InputDecoration(
         hintText: hintText,
         errorText: errorText,

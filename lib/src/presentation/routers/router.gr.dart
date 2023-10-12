@@ -45,12 +45,6 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const CreateAnnouncementScreenPage(),
       );
     },
-    CreateTaskMemoizationScreenRouter.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const CreateTaskMemoizationScreenPage(),
-      );
-    },
     CreateTaskScreenRouter.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -85,12 +79,6 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const StudentsScreenPage(),
-      );
-    },
-    TaskMemoizationScreenRouter.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const TaskMemoizationScreenPage(),
       );
     },
     TaskScreenRouter.name: (routeData) {
@@ -168,20 +156,6 @@ class CreateAnnouncementScreenRouter extends PageRouteInfo<void> {
         );
 
   static const String name = 'CreateAnnouncementScreenRouter';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
-}
-
-/// generated route for
-/// [CreateTaskMemoizationScreenPage]
-class CreateTaskMemoizationScreenRouter extends PageRouteInfo<void> {
-  const CreateTaskMemoizationScreenRouter({List<PageRouteInfo>? children})
-      : super(
-          CreateTaskMemoizationScreenRouter.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'CreateTaskMemoizationScreenRouter';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
@@ -266,20 +240,6 @@ class StudentsScreenRouter extends PageRouteInfo<void> {
         );
 
   static const String name = 'StudentsScreenRouter';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
-}
-
-/// generated route for
-/// [TaskMemoizationScreenPage]
-class TaskMemoizationScreenRouter extends PageRouteInfo<void> {
-  const TaskMemoizationScreenRouter({List<PageRouteInfo>? children})
-      : super(
-          TaskMemoizationScreenRouter.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'TaskMemoizationScreenRouter';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:report_book/src/presentation/routers/router.dart';
 
 @RoutePage()
 class AnnouncementScreenPage extends StatelessWidget {
@@ -22,11 +23,12 @@ class AnnouncementScreenPage extends StatelessWidget {
         separatorBuilder: (context, index) => const Divider(),
         itemBuilder: (context, index) => ListTile(
           title: Text('Annoucement $index'),
-          subtitle: Text('this is body'),
+          subtitle: const Text('this is body'),
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () => AutoRouter.of(context)
+            .pushNamed(CreateAnnouncementScreenRouter.name),
         child: const Icon(Icons.add),
       ),
     );

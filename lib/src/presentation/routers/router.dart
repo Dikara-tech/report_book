@@ -7,13 +7,11 @@ import 'package:report_book/src/presentation/features/chat_detail/chat_detail_sc
 import 'package:report_book/src/presentation/features/chats/chat_screen_page.dart';
 import 'package:report_book/src/presentation/features/create_announcement/create_announcement_screen_page.dart';
 import 'package:report_book/src/presentation/features/create_task/create_task_screen_page.dart';
-import 'package:report_book/src/presentation/features/create_task_memoization/create_task_memoization_screen_page.dart';
 import 'package:report_book/src/presentation/features/home/home_screen_page.dart';
 import 'package:report_book/src/presentation/features/login/login_screen_page.dart';
 import 'package:report_book/src/presentation/features/profile/profile_screen_page.dart';
 import 'package:report_book/src/presentation/features/register_student/register_student.dart';
 import 'package:report_book/src/presentation/features/students/student_screen_page.dart';
-import 'package:report_book/src/presentation/features/task_memoization/task_memoization_screen_page.dart';
 import 'package:report_book/src/presentation/features/tasks/tasks_screen_page.dart';
 import 'package:report_book_core/report_book_core.dart';
 
@@ -61,10 +59,6 @@ class AppRouter extends _$AppRouter {
     AutoRoute(
       page: ChatDetailScreenRouter.page,
       path: '/chat-detail',
-    ),
-    AutoRoute(
-      page: CreateTaskMemoizationScreenRouter.page,
-      path: '/create-task-memoization',
     ),
     AutoRoute(
       page: CreateAnnouncementScreenRouter.page,
