@@ -69,10 +69,10 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const LoginScreenPage(),
       );
     },
-    ProfileStudentScreenRouter.name: (routeData) {
+    ProfileScreenRouter.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const ProfileStudentScreenPage(),
+        child: const ProfileScreenPage(),
       );
     },
     RegisterStudentScreenRouter.name: (routeData) {
@@ -229,15 +229,15 @@ class LoginScreenRouter extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [ProfileStudentScreenPage]
-class ProfileStudentScreenRouter extends PageRouteInfo<void> {
-  const ProfileStudentScreenRouter({List<PageRouteInfo>? children})
+/// [ProfileScreenPage]
+class ProfileScreenRouter extends PageRouteInfo<void> {
+  const ProfileScreenRouter({List<PageRouteInfo>? children})
       : super(
-          ProfileStudentScreenRouter.name,
+          ProfileScreenRouter.name,
           initialChildren: children,
         );
 
-  static const String name = 'ProfileStudentScreenRouter';
+  static const String name = 'ProfileScreenRouter';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

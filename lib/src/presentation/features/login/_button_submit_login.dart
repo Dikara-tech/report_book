@@ -10,7 +10,9 @@ class _ButtonSubmitLogin extends StatelessWidget {
       width: sizeWidth,
       child: CustomButtonWidget(
         titleButton: 'Submit',
-        onAction: () {},
+        onAction: () {
+          AutoRouter.of(context).push(const HomeScreenRouter());
+        },
       ),
     );
   }

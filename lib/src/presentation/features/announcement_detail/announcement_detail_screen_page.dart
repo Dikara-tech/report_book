@@ -2,8 +2,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage()
-class AnnouncementScreenPage extends StatelessWidget {
-  const AnnouncementScreenPage({super.key});
+class AnnouncementDetailScreenPage extends StatelessWidget {
+  const AnnouncementDetailScreenPage({super.key});
 
   @override
   Widget build(BuildContext context) {
