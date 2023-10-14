@@ -15,185 +15,265 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
-    AnnouncementRouter.name: (routeData) {
+    AnnouncementDetailScreenRouter.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const AnnouncementPage(),
+        child: const AnnouncementDetailScreenPage(),
       );
     },
-    AssignmentListRouter.name: (routeData) {
+    AnnouncementScreenRouter.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const AssignmentListPage(),
+        child: const AnnouncementScreenPage(),
       );
     },
-    AssignmentValueListRouter.name: (routeData) {
+    ChatDetailScreenRouter.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const AssignmentValueListPage(),
+        child: const ChatDetailScreenPage(),
       );
     },
-    LoginRouter.name: (routeData) {
+    ChatScreenRouter.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const LoginPage(),
+        child: const ChatScreenPage(),
       );
     },
-    MainRouter.name: (routeData) {
+    CreateAnnouncementScreenRouter.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const MainPage(),
+        child: const CreateAnnouncementScreenPage(),
       );
     },
-    MainScopeRouter.name: (routeData) {
+    CreateTaskScreenRouter.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const MainScopePage(),
+        child: const CreateTaskScreenPage(),
       );
     },
-    MessageListRouter.name: (routeData) {
+    HomeScreenRouter.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const MessageListPage(),
+        child: const HomeScreenPage(),
       );
     },
-    ProfileRouter.name: (routeData) {
+    LoginScreenRouter.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const ProfilePage(),
+        child: const LoginScreenPage(),
       );
     },
-    RecitationListRouter.name: (routeData) {
+    ProfileScreenRouter.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const RecitationListPage(),
+        child: const ProfileScreenPage(),
+      );
+    },
+    RegisterStudentScreenRouter.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const RegisterStudentScreenPage(),
+      );
+    },
+    StudentsScreenRouter.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const StudentsScreenPage(),
+      );
+    },
+    TaskDetailScreenRouter.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const TaskDetailScreenPage(),
+      );
+    },
+    TaskScreenRouter.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const TaskScreenPage(),
       );
     },
   };
 }
 
 /// generated route for
-/// [AnnouncementPage]
-class AnnouncementRouter extends PageRouteInfo<void> {
-  const AnnouncementRouter({List<PageRouteInfo>? children})
+/// [AnnouncementDetailScreenPage]
+class AnnouncementDetailScreenRouter extends PageRouteInfo<void> {
+  const AnnouncementDetailScreenRouter({List<PageRouteInfo>? children})
       : super(
-          AnnouncementRouter.name,
+          AnnouncementDetailScreenRouter.name,
           initialChildren: children,
         );
 
-  static const String name = 'AnnouncementRouter';
+  static const String name = 'AnnouncementDetailScreenRouter';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for
-/// [AssignmentListPage]
-class AssignmentListRouter extends PageRouteInfo<void> {
-  const AssignmentListRouter({List<PageRouteInfo>? children})
+/// [AnnouncementScreenPage]
+class AnnouncementScreenRouter extends PageRouteInfo<void> {
+  const AnnouncementScreenRouter({List<PageRouteInfo>? children})
       : super(
-          AssignmentListRouter.name,
+          AnnouncementScreenRouter.name,
           initialChildren: children,
         );
 
-  static const String name = 'AssignmentListRouter';
+  static const String name = 'AnnouncementScreenRouter';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for
-/// [AssignmentValueListPage]
-class AssignmentValueListRouter extends PageRouteInfo<void> {
-  const AssignmentValueListRouter({List<PageRouteInfo>? children})
+/// [ChatDetailScreenPage]
+class ChatDetailScreenRouter extends PageRouteInfo<void> {
+  const ChatDetailScreenRouter({List<PageRouteInfo>? children})
       : super(
-          AssignmentValueListRouter.name,
+          ChatDetailScreenRouter.name,
           initialChildren: children,
         );
 
-  static const String name = 'AssignmentValueListRouter';
+  static const String name = 'ChatDetailScreenRouter';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for
-/// [LoginPage]
-class LoginRouter extends PageRouteInfo<void> {
-  const LoginRouter({List<PageRouteInfo>? children})
+/// [ChatScreenPage]
+class ChatScreenRouter extends PageRouteInfo<void> {
+  const ChatScreenRouter({List<PageRouteInfo>? children})
       : super(
-          LoginRouter.name,
+          ChatScreenRouter.name,
           initialChildren: children,
         );
 
-  static const String name = 'LoginRouter';
+  static const String name = 'ChatScreenRouter';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for
-/// [MainPage]
-class MainRouter extends PageRouteInfo<void> {
-  const MainRouter({List<PageRouteInfo>? children})
+/// [CreateAnnouncementScreenPage]
+class CreateAnnouncementScreenRouter extends PageRouteInfo<void> {
+  const CreateAnnouncementScreenRouter({List<PageRouteInfo>? children})
       : super(
-          MainRouter.name,
+          CreateAnnouncementScreenRouter.name,
           initialChildren: children,
         );
 
-  static const String name = 'MainRouter';
+  static const String name = 'CreateAnnouncementScreenRouter';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for
-/// [MainScopePage]
-class MainScopeRouter extends PageRouteInfo<void> {
-  const MainScopeRouter({List<PageRouteInfo>? children})
+/// [CreateTaskScreenPage]
+class CreateTaskScreenRouter extends PageRouteInfo<void> {
+  const CreateTaskScreenRouter({List<PageRouteInfo>? children})
       : super(
-          MainScopeRouter.name,
+          CreateTaskScreenRouter.name,
           initialChildren: children,
         );
 
-  static const String name = 'MainScopeRouter';
+  static const String name = 'CreateTaskScreenRouter';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for
-/// [MessageListPage]
-class MessageListRouter extends PageRouteInfo<void> {
-  const MessageListRouter({List<PageRouteInfo>? children})
+/// [HomeScreenPage]
+class HomeScreenRouter extends PageRouteInfo<void> {
+  const HomeScreenRouter({List<PageRouteInfo>? children})
       : super(
-          MessageListRouter.name,
+          HomeScreenRouter.name,
           initialChildren: children,
         );
 
-  static const String name = 'MessageListRouter';
+  static const String name = 'HomeScreenRouter';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for
-/// [ProfilePage]
-class ProfileRouter extends PageRouteInfo<void> {
-  const ProfileRouter({List<PageRouteInfo>? children})
+/// [LoginScreenPage]
+class LoginScreenRouter extends PageRouteInfo<void> {
+  const LoginScreenRouter({List<PageRouteInfo>? children})
       : super(
-          ProfileRouter.name,
+          LoginScreenRouter.name,
           initialChildren: children,
         );
 
-  static const String name = 'ProfileRouter';
+  static const String name = 'LoginScreenRouter';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for
-/// [RecitationListPage]
-class RecitationListRouter extends PageRouteInfo<void> {
-  const RecitationListRouter({List<PageRouteInfo>? children})
+/// [ProfileScreenPage]
+class ProfileScreenRouter extends PageRouteInfo<void> {
+  const ProfileScreenRouter({List<PageRouteInfo>? children})
       : super(
-          RecitationListRouter.name,
+          ProfileScreenRouter.name,
           initialChildren: children,
         );
 
-  static const String name = 'RecitationListRouter';
+  static const String name = 'ProfileScreenRouter';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [RegisterStudentScreenPage]
+class RegisterStudentScreenRouter extends PageRouteInfo<void> {
+  const RegisterStudentScreenRouter({List<PageRouteInfo>? children})
+      : super(
+          RegisterStudentScreenRouter.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'RegisterStudentScreenRouter';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [StudentsScreenPage]
+class StudentsScreenRouter extends PageRouteInfo<void> {
+  const StudentsScreenRouter({List<PageRouteInfo>? children})
+      : super(
+          StudentsScreenRouter.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'StudentsScreenRouter';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [TaskDetailScreenPage]
+class TaskDetailScreenRouter extends PageRouteInfo<void> {
+  const TaskDetailScreenRouter({List<PageRouteInfo>? children})
+      : super(
+          TaskDetailScreenRouter.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'TaskDetailScreenRouter';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [TaskScreenPage]
+class TaskScreenRouter extends PageRouteInfo<void> {
+  const TaskScreenRouter({List<PageRouteInfo>? children})
+      : super(
+          TaskScreenRouter.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'TaskScreenRouter';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
