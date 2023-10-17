@@ -1,6 +1,9 @@
-import 'package:auto_route/auto_route.dart';
+import 'package:dikara_core/dikara_core.dart';
 import 'package:flutter/material.dart';
-import 'package:report_book/src/presentation/routers/router.dart';
+import 'package:report_book/src/presentation/features/login/bloc/form/login_form.dart';
+import 'package:report_book/src/presentation/features/login/bloc/form/login_form_state.dart';
+import 'package:report_book/src/presentation/features/login/bloc/login/login_bloc.dart';
+import 'package:report_book/src/presentation/features/login/bloc/login/login_state.dart';
 import 'package:report_book/src/widgets/custom_button_widget.dart';
 import 'package:report_book/src/widgets/custom_text_field_widget.dart';
 
@@ -18,20 +21,26 @@ class LoginScreenPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       resizeToAvoidBottomInset: false,
       body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            SizedBox(height: kToolbarHeight),
-            _TitleWelcomeLogin(),
-            _TextInputTeacher(),
-            _TextInputPassword(),
-            Spacer(),
-            _ButtonSubmitLogin(),
+        child: MultiProvider(
+          providers: [
+            Provider(create: (context) => LoginBloc.create()),
+            Provider(create: (context) => LoginForm())
           ],
+          child: const Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              SizedBox(height: kToolbarHeight),
+              _TitleWelcomeLogin(),
+              _TextInputTeacher(),
+              _TextInputPassword(),
+              Spacer(),
+              _ButtonSubmitLogin(),
+            ],
+          ),
         ),
       ),
     );
