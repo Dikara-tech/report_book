@@ -26,7 +26,7 @@ final inject = GetIt.instance;
   preferRelativeImports: true,
   externalPackageModulesAfter: [
     ExternalModule(ReportBookCorePackageModule),
-    ExternalModule(DikaraCorePackageModule),
+    //ExternalModule(DikaraCorePackageModule),
   ],
 )
 Future<void> configureDependencies({
