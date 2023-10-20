@@ -14,13 +14,24 @@ class LoginBloc {
 
   Stream<LoginState> get watchState => _publishSubject.stream;
 
-  Future<void> submitLogin(String email, String password) async {
+  Future<void> submitLogin(String userId) async {
     try {
       _publishSubject.add(const LoginState.loading());
-      await _authenticationRepository.login(email: email, password: password);
-      _publishSubject.add(const LoginState.success());
+      final userType = await _authenticationRepository.signIn(userId);
+      _userTypeLogin(userType);
     } catch (error) {
       _publishSubject.add(const LoginState.error());
+    }
+  }
+
+  void _userTypeLogin(UserType? usertype) {
+    switch (usertype) {
+      case UserType.student:
+        _publishSubject.add(const LoginState.student());
+      case UserType.teacher:
+        _publishSubject.add(const LoginState.teacher());
+      default:
+        _publishSubject.add(const LoginState.notFoundUser());
     }
   }
 
