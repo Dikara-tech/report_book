@@ -18,24 +18,31 @@ import 'package:report_book_core/report_book_core.dart';
 
 part 'router.gr.dart';
 
-@lazySingleton
+@injectable
 class AuthGuard extends AutoRouteGuard {
+  final UserRepository _userRepository;
   final AuthenticationRepository _authenticationRepository;
 
-  AuthGuard(this._authenticationRepository);
+  AuthGuard(this._userRepository, this._authenticationRepository);
 
   @override
   Future<void> onNavigation(
     NavigationResolver resolver,
     StackRouter router,
   ) async {
-    final isLoggedIn = _authenticationRepository.userIsLoggedIn;
-
-    if (!isLoggedIn) {
-      resolver.next(true);
+    final userId = _authenticationRepository.userId;
+    if (userId != null) {
+      final userType = await _userRepository.getUserType(userId);
+      switch (userType) {
+        case UserType.student:
+          resolver.next(false);
+        case UserType.teacher:
+          await resolver.redirect(const HomeScreenRouter(), replace: true);
+        default:
+          resolver.next(true);
+      }
     } else {
-      //await router.push(const MainScopeRouter());
-      resolver.next(false);
+      resolver.next(true);
     }
   }
 }
