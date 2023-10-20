@@ -5,28 +5,20 @@ class _ButtonSubmitLogin extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final sizeWidth = MediaQuery
-        .of(context)
-        .size
-        .width;
+    final sizeWidth = MediaQuery.of(context).size.width;
     return SizedBox(
       width: sizeWidth,
       child: StreamBuilder<LoginState>(
         initialData: const LoginState.initial(),
-        stream: context
-            .read<LoginBloc>()
-            .watchState,
+        stream: context.read<LoginBloc>().watchState,
         builder: (context, snapshot) {
           final dataResult = snapshot.data;
 
           if (dataResult != null) {
             return dataResult.maybeWhen(
               orElse: () => const _SubmitButtonWidget(),
-              loading: () =>
-              const CustomButtonWidget(
-                titleButton: 'Submit',
-                onAction: null,
-              ),
+              loading: () => const CustomButtonWidget(
+                  titleButton: 'Submit', onAction: null),
             );
           }
           return const _SubmitButtonWidget();
@@ -36,7 +28,6 @@ class _ButtonSubmitLogin extends StatelessWidget {
   }
 }
 
-
 class _SubmitButtonWidget extends StatelessWidget {
   const _SubmitButtonWidget();
 
@@ -44,28 +35,25 @@ class _SubmitButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return StreamBuilder<bool>(
       initialData: false,
-      stream: context
-          .read<LoginForm>()
-          .watchStatusForm,
+      stream: context.read<LoginForm>().watchStatusForm,
       builder: (context, snapshot) {
         final isValid = snapshot.data ?? false;
+        if (isValid) {
+          return CustomButtonWidget(
+            titleButton: 'Submit',
+            onAction: () => _onAction(context),
+          );
+        }
 
-        return CustomButtonWidget(
+        return const CustomButtonWidget(
           titleButton: 'Submit',
-          onAction: isValid
-              ? () {
-            final email = context
-                .read<LoginForm>()
-                .emailText;
-            final password = context
-                .read<LoginForm>()
-                .passwordText;
-
-            context.read<LoginBloc>().submitLogin(email, password);
-          }
-              : null,
+          onAction: null,
         );
       },
     );
   }
+
+  void _onAction(BuildContext context) => context
+      .read<LoginBloc>()
+      .submitLogin(context.read<LoginForm>().emailText);
 }
