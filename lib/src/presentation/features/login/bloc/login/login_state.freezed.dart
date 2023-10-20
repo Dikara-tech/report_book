@@ -20,7 +20,9 @@ mixin _$LoginState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() success,
+    required TResult Function() student,
+    required TResult Function() teacher,
+    required TResult Function() notFoundUser,
     required TResult Function() error,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +30,9 @@ mixin _$LoginState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? success,
+    TResult? Function()? student,
+    TResult? Function()? teacher,
+    TResult? Function()? notFoundUser,
     TResult? Function()? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +40,9 @@ mixin _$LoginState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function()? student,
+    TResult Function()? teacher,
+    TResult Function()? notFoundUser,
     TResult Function()? error,
     required TResult orElse(),
   }) =>
@@ -45,7 +51,9 @@ mixin _$LoginState {
   TResult map<TResult extends Object?>({
     required TResult Function(_LoginInitialState value) initial,
     required TResult Function(_LoginLoadingState value) loading,
-    required TResult Function(_LoginSuccessState value) success,
+    required TResult Function(_LoginSuccessStudentState value) student,
+    required TResult Function(_LoginSuccessTeacherState value) teacher,
+    required TResult Function(_LoginNotFoundUserState value) notFoundUser,
     required TResult Function(_LoginErrorState value) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -53,7 +61,9 @@ mixin _$LoginState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoginInitialState value)? initial,
     TResult? Function(_LoginLoadingState value)? loading,
-    TResult? Function(_LoginSuccessState value)? success,
+    TResult? Function(_LoginSuccessStudentState value)? student,
+    TResult? Function(_LoginSuccessTeacherState value)? teacher,
+    TResult? Function(_LoginNotFoundUserState value)? notFoundUser,
     TResult? Function(_LoginErrorState value)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -61,7 +71,9 @@ mixin _$LoginState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoginInitialState value)? initial,
     TResult Function(_LoginLoadingState value)? loading,
-    TResult Function(_LoginSuccessState value)? success,
+    TResult Function(_LoginSuccessStudentState value)? student,
+    TResult Function(_LoginSuccessTeacherState value)? teacher,
+    TResult Function(_LoginNotFoundUserState value)? notFoundUser,
     TResult Function(_LoginErrorState value)? error,
     required TResult orElse(),
   }) =>
@@ -126,7 +138,9 @@ class _$LoginInitialStateImpl implements _LoginInitialState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() success,
+    required TResult Function() student,
+    required TResult Function() teacher,
+    required TResult Function() notFoundUser,
     required TResult Function() error,
   }) {
     return initial();
@@ -137,7 +151,9 @@ class _$LoginInitialStateImpl implements _LoginInitialState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? success,
+    TResult? Function()? student,
+    TResult? Function()? teacher,
+    TResult? Function()? notFoundUser,
     TResult? Function()? error,
   }) {
     return initial?.call();
@@ -148,7 +164,9 @@ class _$LoginInitialStateImpl implements _LoginInitialState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function()? student,
+    TResult Function()? teacher,
+    TResult Function()? notFoundUser,
     TResult Function()? error,
     required TResult orElse(),
   }) {
@@ -163,7 +181,9 @@ class _$LoginInitialStateImpl implements _LoginInitialState {
   TResult map<TResult extends Object?>({
     required TResult Function(_LoginInitialState value) initial,
     required TResult Function(_LoginLoadingState value) loading,
-    required TResult Function(_LoginSuccessState value) success,
+    required TResult Function(_LoginSuccessStudentState value) student,
+    required TResult Function(_LoginSuccessTeacherState value) teacher,
+    required TResult Function(_LoginNotFoundUserState value) notFoundUser,
     required TResult Function(_LoginErrorState value) error,
   }) {
     return initial(this);
@@ -174,7 +194,9 @@ class _$LoginInitialStateImpl implements _LoginInitialState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoginInitialState value)? initial,
     TResult? Function(_LoginLoadingState value)? loading,
-    TResult? Function(_LoginSuccessState value)? success,
+    TResult? Function(_LoginSuccessStudentState value)? student,
+    TResult? Function(_LoginSuccessTeacherState value)? teacher,
+    TResult? Function(_LoginNotFoundUserState value)? notFoundUser,
     TResult? Function(_LoginErrorState value)? error,
   }) {
     return initial?.call(this);
@@ -185,7 +207,9 @@ class _$LoginInitialStateImpl implements _LoginInitialState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoginInitialState value)? initial,
     TResult Function(_LoginLoadingState value)? loading,
-    TResult Function(_LoginSuccessState value)? success,
+    TResult Function(_LoginSuccessStudentState value)? student,
+    TResult Function(_LoginSuccessTeacherState value)? teacher,
+    TResult Function(_LoginNotFoundUserState value)? notFoundUser,
     TResult Function(_LoginErrorState value)? error,
     required TResult orElse(),
   }) {
@@ -240,7 +264,9 @@ class _$LoginLoadingStateImpl implements _LoginLoadingState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() success,
+    required TResult Function() student,
+    required TResult Function() teacher,
+    required TResult Function() notFoundUser,
     required TResult Function() error,
   }) {
     return loading();
@@ -251,7 +277,9 @@ class _$LoginLoadingStateImpl implements _LoginLoadingState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? success,
+    TResult? Function()? student,
+    TResult? Function()? teacher,
+    TResult? Function()? notFoundUser,
     TResult? Function()? error,
   }) {
     return loading?.call();
@@ -262,7 +290,9 @@ class _$LoginLoadingStateImpl implements _LoginLoadingState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function()? student,
+    TResult Function()? teacher,
+    TResult Function()? notFoundUser,
     TResult Function()? error,
     required TResult orElse(),
   }) {
@@ -277,7 +307,9 @@ class _$LoginLoadingStateImpl implements _LoginLoadingState {
   TResult map<TResult extends Object?>({
     required TResult Function(_LoginInitialState value) initial,
     required TResult Function(_LoginLoadingState value) loading,
-    required TResult Function(_LoginSuccessState value) success,
+    required TResult Function(_LoginSuccessStudentState value) student,
+    required TResult Function(_LoginSuccessTeacherState value) teacher,
+    required TResult Function(_LoginNotFoundUserState value) notFoundUser,
     required TResult Function(_LoginErrorState value) error,
   }) {
     return loading(this);
@@ -288,7 +320,9 @@ class _$LoginLoadingStateImpl implements _LoginLoadingState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoginInitialState value)? initial,
     TResult? Function(_LoginLoadingState value)? loading,
-    TResult? Function(_LoginSuccessState value)? success,
+    TResult? Function(_LoginSuccessStudentState value)? student,
+    TResult? Function(_LoginSuccessTeacherState value)? teacher,
+    TResult? Function(_LoginNotFoundUserState value)? notFoundUser,
     TResult? Function(_LoginErrorState value)? error,
   }) {
     return loading?.call(this);
@@ -299,7 +333,9 @@ class _$LoginLoadingStateImpl implements _LoginLoadingState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoginInitialState value)? initial,
     TResult Function(_LoginLoadingState value)? loading,
-    TResult Function(_LoginSuccessState value)? success,
+    TResult Function(_LoginSuccessStudentState value)? student,
+    TResult Function(_LoginSuccessTeacherState value)? teacher,
+    TResult Function(_LoginNotFoundUserState value)? notFoundUser,
     TResult Function(_LoginErrorState value)? error,
     required TResult orElse(),
   }) {
@@ -315,35 +351,38 @@ abstract class _LoginLoadingState implements LoginState {
 }
 
 /// @nodoc
-abstract class _$$LoginSuccessStateImplCopyWith<$Res> {
-  factory _$$LoginSuccessStateImplCopyWith(_$LoginSuccessStateImpl value,
-          $Res Function(_$LoginSuccessStateImpl) then) =
-      __$$LoginSuccessStateImplCopyWithImpl<$Res>;
+abstract class _$$LoginSuccessStudentStateImplCopyWith<$Res> {
+  factory _$$LoginSuccessStudentStateImplCopyWith(
+          _$LoginSuccessStudentStateImpl value,
+          $Res Function(_$LoginSuccessStudentStateImpl) then) =
+      __$$LoginSuccessStudentStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$LoginSuccessStateImplCopyWithImpl<$Res>
-    extends _$LoginStateCopyWithImpl<$Res, _$LoginSuccessStateImpl>
-    implements _$$LoginSuccessStateImplCopyWith<$Res> {
-  __$$LoginSuccessStateImplCopyWithImpl(_$LoginSuccessStateImpl _value,
-      $Res Function(_$LoginSuccessStateImpl) _then)
+class __$$LoginSuccessStudentStateImplCopyWithImpl<$Res>
+    extends _$LoginStateCopyWithImpl<$Res, _$LoginSuccessStudentStateImpl>
+    implements _$$LoginSuccessStudentStateImplCopyWith<$Res> {
+  __$$LoginSuccessStudentStateImplCopyWithImpl(
+      _$LoginSuccessStudentStateImpl _value,
+      $Res Function(_$LoginSuccessStudentStateImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$LoginSuccessStateImpl implements _LoginSuccessState {
-  const _$LoginSuccessStateImpl();
+class _$LoginSuccessStudentStateImpl implements _LoginSuccessStudentState {
+  const _$LoginSuccessStudentStateImpl();
 
   @override
   String toString() {
-    return 'LoginState.success()';
+    return 'LoginState.student()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoginSuccessStateImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$LoginSuccessStudentStateImpl);
   }
 
   @override
@@ -354,10 +393,12 @@ class _$LoginSuccessStateImpl implements _LoginSuccessState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() success,
+    required TResult Function() student,
+    required TResult Function() teacher,
+    required TResult Function() notFoundUser,
     required TResult Function() error,
   }) {
-    return success();
+    return student();
   }
 
   @override
@@ -365,10 +406,12 @@ class _$LoginSuccessStateImpl implements _LoginSuccessState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? success,
+    TResult? Function()? student,
+    TResult? Function()? teacher,
+    TResult? Function()? notFoundUser,
     TResult? Function()? error,
   }) {
-    return success?.call();
+    return student?.call();
   }
 
   @override
@@ -376,12 +419,14 @@ class _$LoginSuccessStateImpl implements _LoginSuccessState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function()? student,
+    TResult Function()? teacher,
+    TResult Function()? notFoundUser,
     TResult Function()? error,
     required TResult orElse(),
   }) {
-    if (success != null) {
-      return success();
+    if (student != null) {
+      return student();
     }
     return orElse();
   }
@@ -391,10 +436,12 @@ class _$LoginSuccessStateImpl implements _LoginSuccessState {
   TResult map<TResult extends Object?>({
     required TResult Function(_LoginInitialState value) initial,
     required TResult Function(_LoginLoadingState value) loading,
-    required TResult Function(_LoginSuccessState value) success,
+    required TResult Function(_LoginSuccessStudentState value) student,
+    required TResult Function(_LoginSuccessTeacherState value) teacher,
+    required TResult Function(_LoginNotFoundUserState value) notFoundUser,
     required TResult Function(_LoginErrorState value) error,
   }) {
-    return success(this);
+    return student(this);
   }
 
   @override
@@ -402,10 +449,12 @@ class _$LoginSuccessStateImpl implements _LoginSuccessState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoginInitialState value)? initial,
     TResult? Function(_LoginLoadingState value)? loading,
-    TResult? Function(_LoginSuccessState value)? success,
+    TResult? Function(_LoginSuccessStudentState value)? student,
+    TResult? Function(_LoginSuccessTeacherState value)? teacher,
+    TResult? Function(_LoginNotFoundUserState value)? notFoundUser,
     TResult? Function(_LoginErrorState value)? error,
   }) {
-    return success?.call(this);
+    return student?.call(this);
   }
 
   @override
@@ -413,19 +462,279 @@ class _$LoginSuccessStateImpl implements _LoginSuccessState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoginInitialState value)? initial,
     TResult Function(_LoginLoadingState value)? loading,
-    TResult Function(_LoginSuccessState value)? success,
+    TResult Function(_LoginSuccessStudentState value)? student,
+    TResult Function(_LoginSuccessTeacherState value)? teacher,
+    TResult Function(_LoginNotFoundUserState value)? notFoundUser,
     TResult Function(_LoginErrorState value)? error,
     required TResult orElse(),
   }) {
-    if (success != null) {
-      return success(this);
+    if (student != null) {
+      return student(this);
     }
     return orElse();
   }
 }
 
-abstract class _LoginSuccessState implements LoginState {
-  const factory _LoginSuccessState() = _$LoginSuccessStateImpl;
+abstract class _LoginSuccessStudentState implements LoginState {
+  const factory _LoginSuccessStudentState() = _$LoginSuccessStudentStateImpl;
+}
+
+/// @nodoc
+abstract class _$$LoginSuccessTeacherStateImplCopyWith<$Res> {
+  factory _$$LoginSuccessTeacherStateImplCopyWith(
+          _$LoginSuccessTeacherStateImpl value,
+          $Res Function(_$LoginSuccessTeacherStateImpl) then) =
+      __$$LoginSuccessTeacherStateImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoginSuccessTeacherStateImplCopyWithImpl<$Res>
+    extends _$LoginStateCopyWithImpl<$Res, _$LoginSuccessTeacherStateImpl>
+    implements _$$LoginSuccessTeacherStateImplCopyWith<$Res> {
+  __$$LoginSuccessTeacherStateImplCopyWithImpl(
+      _$LoginSuccessTeacherStateImpl _value,
+      $Res Function(_$LoginSuccessTeacherStateImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$LoginSuccessTeacherStateImpl implements _LoginSuccessTeacherState {
+  const _$LoginSuccessTeacherStateImpl();
+
+  @override
+  String toString() {
+    return 'LoginState.teacher()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LoginSuccessTeacherStateImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() student,
+    required TResult Function() teacher,
+    required TResult Function() notFoundUser,
+    required TResult Function() error,
+  }) {
+    return teacher();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function()? student,
+    TResult? Function()? teacher,
+    TResult? Function()? notFoundUser,
+    TResult? Function()? error,
+  }) {
+    return teacher?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? student,
+    TResult Function()? teacher,
+    TResult Function()? notFoundUser,
+    TResult Function()? error,
+    required TResult orElse(),
+  }) {
+    if (teacher != null) {
+      return teacher();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoginInitialState value) initial,
+    required TResult Function(_LoginLoadingState value) loading,
+    required TResult Function(_LoginSuccessStudentState value) student,
+    required TResult Function(_LoginSuccessTeacherState value) teacher,
+    required TResult Function(_LoginNotFoundUserState value) notFoundUser,
+    required TResult Function(_LoginErrorState value) error,
+  }) {
+    return teacher(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoginInitialState value)? initial,
+    TResult? Function(_LoginLoadingState value)? loading,
+    TResult? Function(_LoginSuccessStudentState value)? student,
+    TResult? Function(_LoginSuccessTeacherState value)? teacher,
+    TResult? Function(_LoginNotFoundUserState value)? notFoundUser,
+    TResult? Function(_LoginErrorState value)? error,
+  }) {
+    return teacher?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoginInitialState value)? initial,
+    TResult Function(_LoginLoadingState value)? loading,
+    TResult Function(_LoginSuccessStudentState value)? student,
+    TResult Function(_LoginSuccessTeacherState value)? teacher,
+    TResult Function(_LoginNotFoundUserState value)? notFoundUser,
+    TResult Function(_LoginErrorState value)? error,
+    required TResult orElse(),
+  }) {
+    if (teacher != null) {
+      return teacher(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoginSuccessTeacherState implements LoginState {
+  const factory _LoginSuccessTeacherState() = _$LoginSuccessTeacherStateImpl;
+}
+
+/// @nodoc
+abstract class _$$LoginNotFoundUserStateImplCopyWith<$Res> {
+  factory _$$LoginNotFoundUserStateImplCopyWith(
+          _$LoginNotFoundUserStateImpl value,
+          $Res Function(_$LoginNotFoundUserStateImpl) then) =
+      __$$LoginNotFoundUserStateImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoginNotFoundUserStateImplCopyWithImpl<$Res>
+    extends _$LoginStateCopyWithImpl<$Res, _$LoginNotFoundUserStateImpl>
+    implements _$$LoginNotFoundUserStateImplCopyWith<$Res> {
+  __$$LoginNotFoundUserStateImplCopyWithImpl(
+      _$LoginNotFoundUserStateImpl _value,
+      $Res Function(_$LoginNotFoundUserStateImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$LoginNotFoundUserStateImpl implements _LoginNotFoundUserState {
+  const _$LoginNotFoundUserStateImpl();
+
+  @override
+  String toString() {
+    return 'LoginState.notFoundUser()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LoginNotFoundUserStateImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() student,
+    required TResult Function() teacher,
+    required TResult Function() notFoundUser,
+    required TResult Function() error,
+  }) {
+    return notFoundUser();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function()? student,
+    TResult? Function()? teacher,
+    TResult? Function()? notFoundUser,
+    TResult? Function()? error,
+  }) {
+    return notFoundUser?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? student,
+    TResult Function()? teacher,
+    TResult Function()? notFoundUser,
+    TResult Function()? error,
+    required TResult orElse(),
+  }) {
+    if (notFoundUser != null) {
+      return notFoundUser();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoginInitialState value) initial,
+    required TResult Function(_LoginLoadingState value) loading,
+    required TResult Function(_LoginSuccessStudentState value) student,
+    required TResult Function(_LoginSuccessTeacherState value) teacher,
+    required TResult Function(_LoginNotFoundUserState value) notFoundUser,
+    required TResult Function(_LoginErrorState value) error,
+  }) {
+    return notFoundUser(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoginInitialState value)? initial,
+    TResult? Function(_LoginLoadingState value)? loading,
+    TResult? Function(_LoginSuccessStudentState value)? student,
+    TResult? Function(_LoginSuccessTeacherState value)? teacher,
+    TResult? Function(_LoginNotFoundUserState value)? notFoundUser,
+    TResult? Function(_LoginErrorState value)? error,
+  }) {
+    return notFoundUser?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoginInitialState value)? initial,
+    TResult Function(_LoginLoadingState value)? loading,
+    TResult Function(_LoginSuccessStudentState value)? student,
+    TResult Function(_LoginSuccessTeacherState value)? teacher,
+    TResult Function(_LoginNotFoundUserState value)? notFoundUser,
+    TResult Function(_LoginErrorState value)? error,
+    required TResult orElse(),
+  }) {
+    if (notFoundUser != null) {
+      return notFoundUser(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoginNotFoundUserState implements LoginState {
+  const factory _LoginNotFoundUserState() = _$LoginNotFoundUserStateImpl;
 }
 
 /// @nodoc
@@ -468,7 +777,9 @@ class _$LoginErrorStateImpl implements _LoginErrorState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() success,
+    required TResult Function() student,
+    required TResult Function() teacher,
+    required TResult Function() notFoundUser,
     required TResult Function() error,
   }) {
     return error();
@@ -479,7 +790,9 @@ class _$LoginErrorStateImpl implements _LoginErrorState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? success,
+    TResult? Function()? student,
+    TResult? Function()? teacher,
+    TResult? Function()? notFoundUser,
     TResult? Function()? error,
   }) {
     return error?.call();
@@ -490,7 +803,9 @@ class _$LoginErrorStateImpl implements _LoginErrorState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function()? student,
+    TResult Function()? teacher,
+    TResult Function()? notFoundUser,
     TResult Function()? error,
     required TResult orElse(),
   }) {
@@ -505,7 +820,9 @@ class _$LoginErrorStateImpl implements _LoginErrorState {
   TResult map<TResult extends Object?>({
     required TResult Function(_LoginInitialState value) initial,
     required TResult Function(_LoginLoadingState value) loading,
-    required TResult Function(_LoginSuccessState value) success,
+    required TResult Function(_LoginSuccessStudentState value) student,
+    required TResult Function(_LoginSuccessTeacherState value) teacher,
+    required TResult Function(_LoginNotFoundUserState value) notFoundUser,
     required TResult Function(_LoginErrorState value) error,
   }) {
     return error(this);
@@ -516,7 +833,9 @@ class _$LoginErrorStateImpl implements _LoginErrorState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoginInitialState value)? initial,
     TResult? Function(_LoginLoadingState value)? loading,
-    TResult? Function(_LoginSuccessState value)? success,
+    TResult? Function(_LoginSuccessStudentState value)? student,
+    TResult? Function(_LoginSuccessTeacherState value)? teacher,
+    TResult? Function(_LoginNotFoundUserState value)? notFoundUser,
     TResult? Function(_LoginErrorState value)? error,
   }) {
     return error?.call(this);
@@ -527,7 +846,9 @@ class _$LoginErrorStateImpl implements _LoginErrorState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoginInitialState value)? initial,
     TResult Function(_LoginLoadingState value)? loading,
-    TResult Function(_LoginSuccessState value)? success,
+    TResult Function(_LoginSuccessStudentState value)? student,
+    TResult Function(_LoginSuccessTeacherState value)? teacher,
+    TResult Function(_LoginNotFoundUserState value)? notFoundUser,
     TResult Function(_LoginErrorState value)? error,
     required TResult orElse(),
   }) {

@@ -8,7 +8,11 @@ class LoginState with _$LoginState {
 
   const factory LoginState.loading() = _LoginLoadingState;
 
-  const factory LoginState.success() = _LoginSuccessState;
+  const factory LoginState.student() = _LoginSuccessStudentState;
+
+  const factory LoginState.teacher() = _LoginSuccessTeacherState;
+
+  const factory LoginState.notFoundUser() = _LoginNotFoundUserState;
 
   const factory LoginState.error() = _LoginErrorState;
 }
