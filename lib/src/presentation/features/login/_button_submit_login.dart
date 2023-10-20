@@ -55,5 +55,5 @@ class _SubmitButtonWidget extends StatelessWidget {
 
   void _onAction(BuildContext context) => context
       .read<LoginBloc>()
-      .submitLogin(context.read<LoginForm>().emailText);
+      .submitLogin(context.read<LoginForm>().userIdText);
 }
