@@ -11,7 +11,7 @@ class _TextInputTeacher extends StatelessWidget {
         initialData: null,
         stream: context.read<LoginForm>().watchError,
         builder: (context, snapshot) => CustomTextFieldWidget(
-          hintText: 'Input Email',
+          hintText: 'Input TeacherID/UserId',
           maxLines: 1,
           errorText: errorText(snapshot.data),
           textInputType: TextInputType.emailAddress,
