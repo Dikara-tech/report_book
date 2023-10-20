@@ -9,8 +9,6 @@ import 'package:report_book/src/widgets/custom_text_field_widget.dart';
 
 part '_title_welcome_login.dart';
 
-part '_text_input_password.dart';
-
 part '_text_input_teacher_id.dart';
 
 part '_button_submit_login.dart';
@@ -36,7 +34,6 @@ class LoginScreenPage extends StatelessWidget {
               SizedBox(height: kToolbarHeight),
               _TitleWelcomeLogin(),
               _TextInputTeacher(),
-              _TextInputPassword(),
               Spacer(),
               _ButtonSubmitLogin(),
             ],
