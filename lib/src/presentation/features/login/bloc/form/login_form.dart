@@ -2,54 +2,27 @@ import 'package:report_book/src/presentation/features/login/bloc/form/login_form
 import 'package:rxdart/rxdart.dart';
 
 class LoginForm {
-  final _emailForm = PublishSubject<String>();
-
-  final _password = PublishSubject<String>();
+  final _userId = PublishSubject<String>();
 
   String _emailText = '';
 
   String get emailText => _emailText;
 
-  String _passwordText = '';
-
-  String get passwordText => _passwordText;
-
-  Stream<LoginFormState?> get watchError => _emailForm.stream
+  Stream<LoginFormState?> get watchError => _userId.stream
           .debounceTime(const Duration(milliseconds: 100))
           .map((event) {
         if (event.isEmpty) return const LoginFormState.empty();
         return null;
       });
 
-  Stream<LoginFormState?> get watchErrorPassword => _password.stream
-          .debounceTime(const Duration(milliseconds: 100))
-          .map((event) {
-        if (event.isEmpty) return const LoginFormState.empty();
-        return null;
-      });
-
-  Stream<bool> get watchStatusForm => CombineLatestStream.combine2(
-        _emailForm.stream,
-        _password.stream,
-        (emailStream, passwordStream) {
-          print(emailStream);
-          print(passwordStream);
-          return emailStream.isNotEmpty && passwordStream.isNotEmpty;
-        },
-      );
+  Stream<bool> get watchStatusForm => watchError.map((event) => event != null);
 
   void onSetEmail(String email) {
     _emailText = email;
-    _emailForm.add(email);
-  }
-
-  void onSetPassword(String password) {
-    _passwordText = password;
-    _password.add(password);
+    _userId.add(email);
   }
 
   void onClose() {
-    _emailForm.close();
-    _password.close();
+    _userId.close();
   }
 }
