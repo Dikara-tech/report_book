@@ -4,9 +4,9 @@ import 'package:rxdart/rxdart.dart';
 class LoginForm {
   final _userId = PublishSubject<String>();
 
-  String _emailText = '';
+  String _userIdText = '';
 
-  String get emailText => _emailText;
+  String get userIdText => _userIdText;
 
   Stream<LoginFormState?> get watchError => _userId.stream
           .debounceTime(const Duration(milliseconds: 100))
@@ -18,7 +18,7 @@ class LoginForm {
   Stream<bool> get watchStatusForm => watchError.map((event) => event != null);
 
   void onSetEmail(String email) {
-    _emailText = email;
+    _userIdText = email;
     _userId.add(email);
   }
 
