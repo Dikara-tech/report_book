@@ -1,5 +1,10 @@
-import 'package:auto_route/auto_route.dart';
+import 'package:dikara_core/dikara_core.dart';
 import 'package:flutter/material.dart';
+import 'package:report_book/src/presentation/features/students/bloc/student_list/student_list_bloc.dart';
+import 'package:report_book/src/presentation/routers/router.dart';
+import 'package:report_book_core/report_book_core.dart';
+
+part '_student_list_widget.dart';
 
 @RoutePage()
 class StudentsScreenPage extends StatelessWidget {
@@ -7,30 +12,17 @@ class StudentsScreenPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('Students'),
       ),
-      body: ListView.separated(
-        itemCount: 20,
-        padding: const EdgeInsets.symmetric(vertical: 16.0),
-        separatorBuilder: (context, index) =>
-            const Padding(padding: EdgeInsets.symmetric(vertical: 4.0)),
-        itemBuilder: (context, index) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Card(
-              child: ListTile(
-                title: Text('Title $index', style: theme.textTheme.titleMedium),
-              ),
-            ),
-          );
-        },
+      body: MultiProvider(
+        providers: [Provider(create: (context) => StudentListBloc.create())],
+        child: const _StudentListWidget(),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () =>
+            AutoRouter.of(context).push(const CreateStudentScreenRouter()),
         child: const Icon(Icons.add),
       ),
     );

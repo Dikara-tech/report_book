@@ -45,6 +45,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const CreateAnnouncementScreenPage(),
       );
     },
+    CreateStudentScreenRouter.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const CreateStudentScreenPage(),
+      );
+    },
     CreateTaskScreenRouter.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -162,6 +168,20 @@ class CreateAnnouncementScreenRouter extends PageRouteInfo<void> {
         );
 
   static const String name = 'CreateAnnouncementScreenRouter';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [CreateStudentScreenPage]
+class CreateStudentScreenRouter extends PageRouteInfo<void> {
+  const CreateStudentScreenRouter({List<PageRouteInfo>? children})
+      : super(
+          CreateStudentScreenRouter.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CreateStudentScreenRouter';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
