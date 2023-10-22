@@ -6,6 +6,7 @@ import 'package:report_book/src/presentation/features/announcements/announcement
 import 'package:report_book/src/presentation/features/chat_detail/chat_detail_screen_page.dart';
 import 'package:report_book/src/presentation/features/chats/chat_screen_page.dart';
 import 'package:report_book/src/presentation/features/create_announcement/create_announcement_screen_page.dart';
+import 'package:report_book/src/presentation/features/create_student/create_student_screen_page.dart';
 import 'package:report_book/src/presentation/features/create_task/create_task_screen_page.dart';
 import 'package:report_book/src/presentation/features/home/home_screen_page.dart';
 import 'package:report_book/src/presentation/features/login/login_screen_page.dart';
@@ -32,7 +33,7 @@ class AuthGuard extends AutoRouteGuard {
   ) async {
     final userId = _authenticationRepository.userId;
     if (userId != null) {
-      final userType = await _userRepository.getUserType(userId);
+      final userType = await _userRepository.getUserType();
       switch (userType) {
         case UserType.student:
           resolver.next(false);
@@ -99,6 +100,10 @@ class AppRouter extends _$AppRouter {
     AutoRoute(
       page: TaskDetailScreenRouter.page,
       path: '/task-detail',
+    ),
+    AutoRoute(
+      page: CreateStudentScreenRouter.page,
+      path: '/create_student_page'
     )
   ];
 }
