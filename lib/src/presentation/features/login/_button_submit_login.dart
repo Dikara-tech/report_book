@@ -28,8 +28,40 @@ class _ButtonSubmitLogin extends StatelessWidget {
   }
 }
 
-class _SubmitButtonWidget extends StatelessWidget {
+class _SubmitButtonWidget extends StatefulWidget {
   const _SubmitButtonWidget();
+
+  @override
+  State<_SubmitButtonWidget> createState() => _SubmitButtonWidgetState();
+}
+
+class _SubmitButtonWidgetState extends State<_SubmitButtonWidget> {
+  StreamSubscription<LoginState>? streamSubscription;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    streamSubscription?.cancel();
+    streamSubscription = context.read<LoginBloc>().watchState.listen((event) {
+      if (event is LoginSuccessTeacherState) {
+        AutoRouter.of(context).replace(const HomeScreenRouter());
+      } else if (event is LoginNotFoundUserState) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('User not Found')),
+        );
+      } else if (event is LoginErrorState) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Something Wrong')),
+        );
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    streamSubscription?.cancel();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,10 +70,10 @@ class _SubmitButtonWidget extends StatelessWidget {
       stream: context.read<LoginForm>().watchStatusForm,
       builder: (context, snapshot) {
         final isValid = snapshot.data ?? false;
-        if (isValid) {
+        if (!isValid) {
           return CustomButtonWidget(
             titleButton: 'Submit',
-            onAction: () => _onAction(context),
+            onAction: _onAction,
           );
         }
 
@@ -53,7 +85,7 @@ class _SubmitButtonWidget extends StatelessWidget {
     );
   }
 
-  void _onAction(BuildContext context) => context
+  void _onAction() => context
       .read<LoginBloc>()
       .submitLogin(context.read<LoginForm>().userIdText);
 }
