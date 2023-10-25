@@ -46,9 +46,7 @@ dependencies:
   provider: ^6.0.5
 
   report_book_core:
-    git:
-      url: https://github.com/Dikara-tech/report_book_core
-      ref: dev
+    path: ../report_book_core
   dikara_core:
     git:
       url: https://github.com/Dikara-tech/dikara_core

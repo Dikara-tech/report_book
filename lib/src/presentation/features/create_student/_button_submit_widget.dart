@@ -16,6 +16,7 @@ class _ButtonSubmitWidget extends StatelessWidget {
               name: registerProvider.name,
               userType: UserType.student,
               createdAt: DateTime.now().millisecondsSinceEpoch,
+              email: registerProvider.email,
             );
             context.read<RegisterStudentBloc>().submit(registerModel);
           }

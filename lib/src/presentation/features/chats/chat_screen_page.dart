@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:dikara_core/dikara_core.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage()
