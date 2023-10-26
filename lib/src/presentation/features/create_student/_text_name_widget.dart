@@ -8,7 +8,7 @@ class _TextNameWidget extends StatelessWidget {
     final registerForm = context.watch<RegisterFormProvider>();
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      padding: const EdgeInsets.all(16.0),
       child: CustomTextFieldWidget(
         hintText: 'Input Name',
         errorText: registerForm.errorText,
