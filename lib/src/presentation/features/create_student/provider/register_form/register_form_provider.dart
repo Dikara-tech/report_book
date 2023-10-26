@@ -7,7 +7,11 @@ class RegisterFormProvider extends ChangeNotifier {
 
   String? _errorTextName;
 
+  String? _errorTextEmail;
+
   String? get errorText => _errorTextName;
+
+  String? get errorTextEmail => _errorTextEmail;
 
   String get name => _name ?? '';
 
@@ -18,14 +22,14 @@ class RegisterFormProvider extends ChangeNotifier {
   set email(String email) => _email = email;
 
   bool _validateNameForm() {
-    if (_name == null && (_name?.isEmpty ?? false)) {
+    if (_name == null || (_name?.isEmpty ?? false)) {
       _errorTextName = 'fill the blank';
       notifyListeners();
       return false;
     }
 
-    if (_email == null && (_email?.isEmpty ?? false)) {
-      // todo: add error text for email
+    if (_email == null || (_email?.isEmpty ?? false)) {
+      _errorTextEmail = 'fill the blank';
       notifyListeners();
       return false;
     }
