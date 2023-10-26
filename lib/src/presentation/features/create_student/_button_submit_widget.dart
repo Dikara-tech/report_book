@@ -5,22 +5,32 @@ class _ButtonSubmitWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-      child: CustomButtonWidget(
-        titleButton: 'Register Student',
-        onAction: () {
-          final registerProvider = context.read<RegisterFormProvider>();
-          if (registerProvider.validateForm) {
-            final registerModel = UserModel(
-              name: registerProvider.name,
-              userType: UserType.student,
-              createdAt: DateTime.now().millisecondsSinceEpoch,
-              email: registerProvider.email,
-            );
-            context.read<RegisterStudentBloc>().submit(registerModel);
-          }
-        },
+    final sizeWidth = MediaQuery.of(context).size.width;
+
+    return SizedBox(
+      width: sizeWidth,
+      child: BlocBuilder<RegisterStudentCubit, ResourceState<void>>(
+        builder: (context, state) => state.maybeWhen(
+            orElse: () => CustomButtonWidget(
+                  titleButton: 'Register Student',
+                  onAction: () {
+                    final registerProvider =
+                        context.read<RegisterFormProvider>();
+                    if (registerProvider.validateForm) {
+                      final registerModel = UserModel(
+                        name: registerProvider.name,
+                        userType: UserType.student,
+                        createdAt: DateTime.now().millisecondsSinceEpoch,
+                        email: registerProvider.email,
+                      );
+                      context
+                          .read<RegisterStudentCubit>()
+                          .submit(registerModel);
+                    }
+                  },
+                ),
+            loading: (data) => const CustomButtonWidget(
+                titleButton: 'Register Student', onAction: null)),
       ),
     );
   }
