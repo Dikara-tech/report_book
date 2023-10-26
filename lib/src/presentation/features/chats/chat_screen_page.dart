@@ -1,5 +1,13 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:report_book/src/presentation/features/chats/bloc/chats/chats_cubit.dart';
+import 'package:report_book/src/presentation/routers/router.dart';
+
+
+part '_chat_contents_widget.dart';
+
+part '_chat_card_widget.dart';
 
 @RoutePage()
 class ChatScreenPage extends StatelessWidget {
@@ -11,26 +19,16 @@ class ChatScreenPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Chat'),
       ),
-      body: ListView.separated(
-        itemCount: 20,
-        separatorBuilder: (context, index) =>
-            const Padding(padding: EdgeInsets.symmetric(vertical: 4.0)),
-        itemBuilder: (context, index) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 16.0,
-            ),
-            child: Card(
-              child: ListTile(
-                title: Text('Name: $index'),
-                subtitle: const Text('this is body'),
-              ),
-            ),
-          );
-        },
+      body: MultiBlocProvider(
+        providers: [
+          BlocProvider(create: (context) => ChatsCubit.create()),
+        ],
+        child: const _ChatContentsWidget(),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        heroTag: 'chat',
+        onPressed: () =>
+            AutoRouter.of(context).push(const ChatContactScreenRouter()),
         child: const Icon(Icons.message_outlined),
       ),
     );
