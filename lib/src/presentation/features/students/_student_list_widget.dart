@@ -21,7 +21,20 @@ class _StudentListWidget extends StatelessWidget {
               ),
               itemBuilder: (context, index) => Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: Card(child: ListTile(title: Text(data[index].name))),
+                child: Card(
+                    child: ListTile(
+                  title: Text(data[index].name),
+                  onTap: () {
+                    AutoRouter.of(context).push(
+                      CreateStudentScreenRouter(
+                        isRegisterPage: false,
+                        userId: data[index].id,
+                        name: data[index].name,
+                        email: data[index].email,
+                      ),
+                    );
+                  },
+                )),
               ),
             ),
           );
