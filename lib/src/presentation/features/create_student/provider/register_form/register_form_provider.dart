@@ -9,6 +9,8 @@ class RegisterFormProvider extends ChangeNotifier {
 
   String? _errorTextEmail;
 
+  RegisterFormProvider(this._name, this._email);
+
   String? get errorText => _errorTextName;
 
   String? get errorTextEmail => _errorTextEmail;
