@@ -1,7 +1,13 @@
 part of 'create_student_screen_page.dart';
 
 class _ButtonSubmitWidget extends StatelessWidget {
-  const _ButtonSubmitWidget();
+  const _ButtonSubmitWidget({
+    this.isRegister = true,
+    this.idUser,
+  });
+
+  final bool isRegister;
+  final String? idUser;
 
   @override
   Widget build(BuildContext context) {
@@ -9,23 +15,23 @@ class _ButtonSubmitWidget extends StatelessWidget {
 
     return SizedBox(
       width: sizeWidth,
-      child: BlocBuilder<RegisterStudentCubit, ResourceState<void>>(
+      child: BlocBuilder<InputStudentCubit, ResourceState<void>>(
         builder: (context, state) => state.maybeWhen(
             orElse: () => CustomButtonWidget(
-                  titleButton: 'Register Student',
+                  titleButton:
+                      isRegister ? 'Register Student' : 'Update Student',
                   onAction: () {
                     final registerProvider =
                         context.read<RegisterFormProvider>();
                     if (registerProvider.validateForm) {
                       final registerModel = UserModel(
+                        id: idUser,
                         name: registerProvider.name,
                         userType: UserType.student,
                         createdAt: DateTime.now().millisecondsSinceEpoch,
                         email: registerProvider.email,
                       );
-                      context
-                          .read<RegisterStudentCubit>()
-                          .submit(registerModel);
+                      context.read<InputStudentCubit>().submit(registerModel);
                     }
                   },
                 ),
