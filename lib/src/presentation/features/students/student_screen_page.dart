@@ -22,7 +22,7 @@ class StudentsScreenPage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () =>
-            AutoRouter.of(context).push(const CreateStudentScreenRouter()),
+            AutoRouter.of(context).push(CreateStudentScreenRouter()),
         child: const Icon(Icons.add),
       ),
     );
