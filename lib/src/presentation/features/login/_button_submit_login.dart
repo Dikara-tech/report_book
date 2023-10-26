@@ -6,62 +6,53 @@ class _ButtonSubmitLogin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final sizeWidth = MediaQuery.of(context).size.width;
+    final theme = Theme.of(context);
+
     return SizedBox(
       width: sizeWidth,
-      child: StreamBuilder<LoginState>(
-        initialData: const LoginState.initial(),
-        stream: context.read<LoginBloc>().watchState,
-        builder: (context, snapshot) {
-          final dataResult = snapshot.data;
-
-          if (dataResult != null) {
-            return dataResult.maybeWhen(
-              orElse: () => const _SubmitButtonWidget(),
-              loading: () => const CustomButtonWidget(
-                  titleButton: 'Submit', onAction: null),
-            );
-          }
-          return const _SubmitButtonWidget();
-        },
+      child: BlocConsumer<LoginCubit, LoginState>(
+        listener: (context, state) => state.maybeWhen(
+          orElse: () => null,
+          student: () => null,
+          teacher: () =>
+              AutoRouter.of(context).replace(const HomeScreenRouter()),
+          notFoundUser: () => ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              backgroundColor: Colors.black,
+              content: Text(
+                'User not Found',
+                style: theme.textTheme.bodySmall?.copyWith(
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ),
+          error: () => ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              backgroundColor: Colors.black,
+              content: Text(
+                'Something Wrong',
+                style: theme.textTheme.bodySmall?.copyWith(
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ),
+        ),
+        builder: (context, state) => state.maybeWhen(
+          orElse: () => const _SubmitButtonWidget(),
+          loading: () => const CustomButtonWidget(
+            titleButton: 'Submit',
+            onAction: null,
+          ),
+        ),
       ),
     );
   }
 }
 
-class _SubmitButtonWidget extends StatefulWidget {
+class _SubmitButtonWidget extends StatelessWidget {
   const _SubmitButtonWidget();
-
-  @override
-  State<_SubmitButtonWidget> createState() => _SubmitButtonWidgetState();
-}
-
-class _SubmitButtonWidgetState extends State<_SubmitButtonWidget> {
-  StreamSubscription<LoginState>? streamSubscription;
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    streamSubscription?.cancel();
-    streamSubscription = context.read<LoginBloc>().watchState.listen((event) {
-      if (event is LoginSuccessTeacherState) {
-        AutoRouter.of(context).replace(const HomeScreenRouter());
-      } else if (event is LoginNotFoundUserState) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('User not Found')),
-        );
-      } else if (event is LoginErrorState) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Something Wrong')),
-        );
-      }
-    });
-  }
-
-  @override
-  void dispose() {
-    streamSubscription?.cancel();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -73,7 +64,7 @@ class _SubmitButtonWidgetState extends State<_SubmitButtonWidget> {
         if (!isValid) {
           return CustomButtonWidget(
             titleButton: 'Submit',
-            onAction: _onAction,
+            onAction: () => _onAction(context),
           );
         }
 
@@ -85,7 +76,7 @@ class _SubmitButtonWidgetState extends State<_SubmitButtonWidget> {
     );
   }
 
-  void _onAction() => context
-      .read<LoginBloc>()
+  void _onAction(BuildContext context) => context
+      .read<LoginCubit>()
       .submitLogin(context.read<LoginForm>().userIdText);
 }
