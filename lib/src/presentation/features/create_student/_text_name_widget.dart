@@ -10,6 +10,9 @@ class _TextNameWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: CustomTextFieldWidget(
+        textEditingController: TextEditingController(
+          text: context.read<RegisterFormProvider>().name,
+        ),
         hintText: 'Input Name',
         errorText: registerForm.errorText,
         onChange: (value) => context.read<RegisterFormProvider>().name = value,
