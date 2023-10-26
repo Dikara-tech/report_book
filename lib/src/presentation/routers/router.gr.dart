@@ -64,9 +64,25 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     CreateStudentScreenRouter.name: (routeData) {
+      final queryParams = routeData.queryParams;
+      final args = routeData.argsAs<CreateStudentScreenRouterArgs>(
+          orElse: () => CreateStudentScreenRouterArgs(
+                isRegisterPage: queryParams.getBool(
+                  'isRegisterPage',
+                  true,
+                ),
+                userId: queryParams.optString('userId'),
+                name: queryParams.optString('name'),
+                email: queryParams.optString('email'),
+              ));
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const CreateStudentScreenPage(),
+        child: CreateStudentScreenPage(
+          isRegisterPage: args.isRegisterPage,
+          userId: args.userId,
+          name: args.name,
+          email: args.email,
+        ),
       );
     },
     CreateTaskScreenRouter.name: (routeData) {
@@ -240,16 +256,57 @@ class CreateAnnouncementScreenRouter extends PageRouteInfo<void> {
 
 /// generated route for
 /// [CreateStudentScreenPage]
-class CreateStudentScreenRouter extends PageRouteInfo<void> {
-  const CreateStudentScreenRouter({List<PageRouteInfo>? children})
-      : super(
+class CreateStudentScreenRouter
+    extends PageRouteInfo<CreateStudentScreenRouterArgs> {
+  CreateStudentScreenRouter({
+    bool isRegisterPage = true,
+    String? userId,
+    String? name,
+    String? email,
+    List<PageRouteInfo>? children,
+  }) : super(
           CreateStudentScreenRouter.name,
+          args: CreateStudentScreenRouterArgs(
+            isRegisterPage: isRegisterPage,
+            userId: userId,
+            name: name,
+            email: email,
+          ),
+          rawQueryParams: {
+            'isRegisterPage': isRegisterPage,
+            'userId': userId,
+            'name': name,
+            'email': email,
+          },
           initialChildren: children,
         );
 
   static const String name = 'CreateStudentScreenRouter';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<CreateStudentScreenRouterArgs> page =
+      PageInfo<CreateStudentScreenRouterArgs>(name);
+}
+
+class CreateStudentScreenRouterArgs {
+  const CreateStudentScreenRouterArgs({
+    this.isRegisterPage = true,
+    this.userId,
+    this.name,
+    this.email,
+  });
+
+  final bool isRegisterPage;
+
+  final String? userId;
+
+  final String? name;
+
+  final String? email;
+
+  @override
+  String toString() {
+    return 'CreateStudentScreenRouterArgs{isRegisterPage: $isRegisterPage, userId: $userId, name: $name, email: $email}';
+  }
 }
 
 /// generated route for
