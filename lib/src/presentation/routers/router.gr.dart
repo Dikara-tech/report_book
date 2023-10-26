@@ -27,10 +27,28 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const AnnouncementScreenPage(),
       );
     },
-    ChatDetailScreenRouter.name: (routeData) {
+    ChatContactScreenRouter.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const ChatDetailScreenPage(),
+        child: const ChatContactScreenPage(),
+      );
+    },
+    ChatDetailScreenRouter.name: (routeData) {
+      final pathParams = routeData.inheritedPathParams;
+      final queryParams = routeData.queryParams;
+      final args = routeData.argsAs<ChatDetailScreenRouterArgs>(
+          orElse: () => ChatDetailScreenRouterArgs(
+                senderId: pathParams.getString('senderId'),
+                chatId: queryParams.optString('chatId'),
+                senderName: queryParams.optString('senderName'),
+              ));
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: ChatDetailScreenPage(
+          senderId: args.senderId,
+          chatId: args.chatId,
+          senderName: args.senderName,
+        ),
       );
     },
     ChatScreenRouter.name: (routeData) {
@@ -131,17 +149,65 @@ class AnnouncementScreenRouter extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [ChatDetailScreenPage]
-class ChatDetailScreenRouter extends PageRouteInfo<void> {
-  const ChatDetailScreenRouter({List<PageRouteInfo>? children})
+/// [ChatContactScreenPage]
+class ChatContactScreenRouter extends PageRouteInfo<void> {
+  const ChatContactScreenRouter({List<PageRouteInfo>? children})
       : super(
+          ChatContactScreenRouter.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ChatContactScreenRouter';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [ChatDetailScreenPage]
+class ChatDetailScreenRouter extends PageRouteInfo<ChatDetailScreenRouterArgs> {
+  ChatDetailScreenRouter({
+    required String senderId,
+    String? chatId,
+    String? senderName,
+    List<PageRouteInfo>? children,
+  }) : super(
           ChatDetailScreenRouter.name,
+          args: ChatDetailScreenRouterArgs(
+            senderId: senderId,
+            chatId: chatId,
+            senderName: senderName,
+          ),
+          rawPathParams: {'senderId': senderId},
+          rawQueryParams: {
+            'chatId': chatId,
+            'senderName': senderName,
+          },
           initialChildren: children,
         );
 
   static const String name = 'ChatDetailScreenRouter';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<ChatDetailScreenRouterArgs> page =
+      PageInfo<ChatDetailScreenRouterArgs>(name);
+}
+
+class ChatDetailScreenRouterArgs {
+  const ChatDetailScreenRouterArgs({
+    required this.senderId,
+    this.chatId,
+    this.senderName,
+  });
+
+  final String senderId;
+
+  final String? chatId;
+
+  final String? senderName;
+
+  @override
+  String toString() {
+    return 'ChatDetailScreenRouterArgs{senderId: $senderId, chatId: $chatId, senderName: $senderName}';
+  }
 }
 
 /// generated route for
