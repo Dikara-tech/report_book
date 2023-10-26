@@ -3,6 +3,7 @@ import 'package:injectable/injectable.dart';
 import 'package:report_book/src/di/injection_container.dart';
 import 'package:report_book/src/presentation/features/announcement_detail/announcement_detail_screen_page.dart';
 import 'package:report_book/src/presentation/features/announcements/announcement_screen_page.dart';
+import 'package:report_book/src/presentation/features/chat_contact/chat_contact_screen_page.dart';
 import 'package:report_book/src/presentation/features/chat_detail/chat_detail_screen_page.dart';
 import 'package:report_book/src/presentation/features/chats/chat_screen_page.dart';
 import 'package:report_book/src/presentation/features/create_announcement/create_announcement_screen_page.dart';
@@ -103,7 +104,15 @@ class AppRouter extends _$AppRouter {
     ),
     AutoRoute(
       page: CreateStudentScreenRouter.page,
-      path: '/create_student_page'
+      path: '/create_student_page',
+    ),
+    AutoRoute(
+      page: ChatContactScreenRouter.page,
+      path: '/contacts_list',
+    ),
+    AutoRoute(
+      page: ChatDetailScreenRouter.page,
+      path: '/chat_detail/:senderId'
     )
   ];
 }
