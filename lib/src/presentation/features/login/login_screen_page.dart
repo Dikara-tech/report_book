@@ -1,7 +1,8 @@
 import 'dart:async';
 
-import 'package:dikara_core/dikara_core.dart';
+import 'package:dikara_core/dikara_core.dart' hide Assets;
 import 'package:flutter/material.dart';
+import 'package:report_book/gen/assets.gen.dart';
 import 'package:report_book/src/presentation/features/login/bloc/form/login_form.dart';
 import 'package:report_book/src/presentation/features/login/bloc/form/login_form_state.dart';
 import 'package:report_book/src/presentation/features/login/bloc/login/login_bloc.dart';
@@ -30,15 +31,19 @@ class LoginScreenPage extends StatelessWidget {
             Provider(create: (context) => LoginBloc.create()),
             Provider(create: (context) => LoginForm())
           ],
-          child: const Column(
+          child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              SizedBox(height: kToolbarHeight),
-              _TitleWelcomeLogin(),
-              _TextInputTeacher(),
-              Spacer(),
-              _ButtonSubmitLogin(),
+              const SizedBox(height: kToolbarHeight),
+              const _TitleWelcomeLogin(),
+              const _TextInputTeacher(),
+              Assets.aciLogo.image(
+                width: 1.sw,
+                fit: BoxFit.fitWidth,
+              ),
+              const Spacer(),
+              const _ButtonSubmitLogin(),
             ],
           ),
         ),
