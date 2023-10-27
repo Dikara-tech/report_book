@@ -1,5 +1,10 @@
-import 'package:auto_route/auto_route.dart';
+import 'package:dikara_core/dikara_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:report_book/src/presentation/features/tasks/bloc/task_list/task_list_cubit.dart';
+import 'package:report_book/src/presentation/routers/router.dart';
+
+part '_task_content_list_widget.dart';
 
 @RoutePage()
 class TaskScreenPage extends StatelessWidget {
@@ -11,23 +16,15 @@ class TaskScreenPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Tasks'),
       ),
-      body: ListView.separated(
-        itemCount: 20,
-        separatorBuilder: (context, index) =>
-            const Padding(padding: EdgeInsets.symmetric(vertical: 4.0)),
-        itemBuilder: (context, index) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Card(
-              child: ListTile(
-                title: Text('Task Index $index'),
-              ),
-            ),
-          );
-        },
+      body: Provider(
+        create: (context) => TaskListCubit.create(),
+        child: const _TaskContentListWidget(),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        heroTag: 'task',
+        onPressed: () {
+          AutoRouter.of(context).push(const CreateTaskScreenRouter());
+        },
         child: const Icon(Icons.add),
       ),
     );
