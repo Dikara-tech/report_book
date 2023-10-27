@@ -5,10 +5,16 @@ class _ButtonCreateTaskWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16.0),
+    final sizeWidth = MediaQuery.of(context).size.width;
+
+    return SizedBox(
+      width: sizeWidth,
       child: CustomButtonWidget(
         titleButton: 'Create Task',
+        onAction: () {
+          final taskModel = context.read<TaskFormProvider>().value;
+          context.read<CreateTaskCubit>().crateTask(taskModel);
+        },
       ),
     );
   }
