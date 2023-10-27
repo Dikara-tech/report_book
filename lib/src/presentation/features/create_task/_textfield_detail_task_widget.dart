@@ -5,10 +5,14 @@ class _TextFieldDetailTaskWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16.0),
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
       child: CustomTextFieldWidget(
         hintText: 'Detail Task',
+        maxLines: 5,
+        onChange: (value) {
+          context.read<TaskFormProvider>().onChangeTaskDetail(value);
+        },
       ),
     );
   }

@@ -5,10 +5,13 @@ class _TextFieldTitleWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16.0),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: CustomTextFieldWidget(
         hintText: 'Title Task',
+        onChange: (value) {
+          context.read<TaskFormProvider>().onChangeTaskTitle(value);
+        },
       ),
     );
   }
