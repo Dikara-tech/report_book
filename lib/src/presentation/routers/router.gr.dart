@@ -63,6 +63,16 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const CreateAnnouncementScreenPage(),
       );
     },
+    CreateScoreScreenRouter.name: (routeData) {
+      final pathParams = routeData.inheritedPathParams;
+      final args = routeData.argsAs<CreateScoreScreenRouterArgs>(
+          orElse: () => CreateScoreScreenRouterArgs(
+              studentId: pathParams.getString('studentId')));
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: CreateScoreScreenPage(studentId: args.studentId),
+      );
+    },
     CreateStudentScreenRouter.name: (routeData) {
       final queryParams = routeData.queryParams;
       final args = routeData.argsAs<CreateStudentScreenRouterArgs>(
@@ -91,6 +101,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const CreateTaskScreenPage(),
       );
     },
+    DomainsScreenRouter.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: DomainsScreenPage(),
+      );
+    },
     HomeScreenRouter.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -113,6 +129,37 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const RegisterStudentScreenPage(),
+      );
+    },
+    ScoreDetailScreenRouter.name: (routeData) {
+      final pathParams = routeData.inheritedPathParams;
+      final args = routeData.argsAs<ScoreDetailScreenRouterArgs>(
+          orElse: () => ScoreDetailScreenRouterArgs(
+              scoreById: pathParams.getString('scoreById')));
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: ScoreDetailScreenPage(scoreById: args.scoreById),
+      );
+    },
+    ScoresScreenRouter.name: (routeData) {
+      final pathParams = routeData.inheritedPathParams;
+      final queryParams = routeData.queryParams;
+      final args = routeData.argsAs<ScoresScreenRouterArgs>(
+          orElse: () => ScoresScreenRouterArgs(
+                studentId: pathParams.getString('studentId'),
+                isTeacher: queryParams.getBool(
+                  'isTeacher',
+                  false,
+                ),
+                nameStudent: queryParams.optString('nameStudent'),
+              ));
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: ScoresScreenPage(
+          studentId: args.studentId,
+          isTeacher: args.isTeacher,
+          nameStudent: args.nameStudent,
+        ),
       );
     },
     StudentsScreenRouter.name: (routeData) {
@@ -255,6 +302,37 @@ class CreateAnnouncementScreenRouter extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [CreateScoreScreenPage]
+class CreateScoreScreenRouter
+    extends PageRouteInfo<CreateScoreScreenRouterArgs> {
+  CreateScoreScreenRouter({
+    required String studentId,
+    List<PageRouteInfo>? children,
+  }) : super(
+          CreateScoreScreenRouter.name,
+          args: CreateScoreScreenRouterArgs(studentId: studentId),
+          rawPathParams: {'studentId': studentId},
+          initialChildren: children,
+        );
+
+  static const String name = 'CreateScoreScreenRouter';
+
+  static const PageInfo<CreateScoreScreenRouterArgs> page =
+      PageInfo<CreateScoreScreenRouterArgs>(name);
+}
+
+class CreateScoreScreenRouterArgs {
+  const CreateScoreScreenRouterArgs({required this.studentId});
+
+  final String studentId;
+
+  @override
+  String toString() {
+    return 'CreateScoreScreenRouterArgs{studentId: $studentId}';
+  }
+}
+
+/// generated route for
 /// [CreateStudentScreenPage]
 class CreateStudentScreenRouter
     extends PageRouteInfo<CreateStudentScreenRouterArgs> {
@@ -324,6 +402,20 @@ class CreateTaskScreenRouter extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [DomainsScreenPage]
+class DomainsScreenRouter extends PageRouteInfo<void> {
+  const DomainsScreenRouter({List<PageRouteInfo>? children})
+      : super(
+          DomainsScreenRouter.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'DomainsScreenRouter';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [HomeScreenPage]
 class HomeScreenRouter extends PageRouteInfo<void> {
   const HomeScreenRouter({List<PageRouteInfo>? children})
@@ -377,6 +469,85 @@ class RegisterStudentScreenRouter extends PageRouteInfo<void> {
   static const String name = 'RegisterStudentScreenRouter';
 
   static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [ScoreDetailScreenPage]
+class ScoreDetailScreenRouter
+    extends PageRouteInfo<ScoreDetailScreenRouterArgs> {
+  ScoreDetailScreenRouter({
+    required String scoreById,
+    List<PageRouteInfo>? children,
+  }) : super(
+          ScoreDetailScreenRouter.name,
+          args: ScoreDetailScreenRouterArgs(scoreById: scoreById),
+          rawPathParams: {'scoreById': scoreById},
+          initialChildren: children,
+        );
+
+  static const String name = 'ScoreDetailScreenRouter';
+
+  static const PageInfo<ScoreDetailScreenRouterArgs> page =
+      PageInfo<ScoreDetailScreenRouterArgs>(name);
+}
+
+class ScoreDetailScreenRouterArgs {
+  const ScoreDetailScreenRouterArgs({required this.scoreById});
+
+  final String scoreById;
+
+  @override
+  String toString() {
+    return 'ScoreDetailScreenRouterArgs{scoreById: $scoreById}';
+  }
+}
+
+/// generated route for
+/// [ScoresScreenPage]
+class ScoresScreenRouter extends PageRouteInfo<ScoresScreenRouterArgs> {
+  ScoresScreenRouter({
+    required String studentId,
+    bool isTeacher = false,
+    String? nameStudent,
+    List<PageRouteInfo>? children,
+  }) : super(
+          ScoresScreenRouter.name,
+          args: ScoresScreenRouterArgs(
+            studentId: studentId,
+            isTeacher: isTeacher,
+            nameStudent: nameStudent,
+          ),
+          rawPathParams: {'studentId': studentId},
+          rawQueryParams: {
+            'isTeacher': isTeacher,
+            'nameStudent': nameStudent,
+          },
+          initialChildren: children,
+        );
+
+  static const String name = 'ScoresScreenRouter';
+
+  static const PageInfo<ScoresScreenRouterArgs> page =
+      PageInfo<ScoresScreenRouterArgs>(name);
+}
+
+class ScoresScreenRouterArgs {
+  const ScoresScreenRouterArgs({
+    required this.studentId,
+    this.isTeacher = false,
+    this.nameStudent,
+  });
+
+  final String studentId;
+
+  final bool isTeacher;
+
+  final String? nameStudent;
+
+  @override
+  String toString() {
+    return 'ScoresScreenRouterArgs{studentId: $studentId, isTeacher: $isTeacher, nameStudent: $nameStudent}';
+  }
 }
 
 /// generated route for

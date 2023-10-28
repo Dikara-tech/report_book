@@ -24,15 +24,31 @@ class _StudentListWidget extends StatelessWidget {
                 child: Card(
                     child: ListTile(
                   title: Text(data[index].name),
+                  trailing: IconButton(
+                    onPressed: () {
+                      AutoRouter.of(context).push(
+                        CreateStudentScreenRouter(
+                          isRegisterPage: false,
+                          userId: data[index].id,
+                          name: data[index].name,
+                          email: data[index].email,
+                        ),
+                      );
+                    },
+                    icon: const Icon(
+                      Icons.edit,
+                      color: Colors.redAccent,
+                    ),
+                  ),
                   onTap: () {
-                    AutoRouter.of(context).push(
-                      CreateStudentScreenRouter(
-                        isRegisterPage: false,
-                        userId: data[index].id,
-                        name: data[index].name,
-                        email: data[index].email,
-                      ),
-                    );
+                    final studentId = data[index].id;
+                    if (studentId != null) {
+                      AutoRouter.of(context).push(ScoresScreenRouter(
+                        studentId: studentId,
+                        nameStudent: data[index].name,
+                        isTeacher: true
+                      ));
+                    }
                   },
                 )),
               ),
