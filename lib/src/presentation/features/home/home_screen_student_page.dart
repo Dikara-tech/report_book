@@ -1,21 +1,22 @@
-import 'package:dikara_core/dikara_core.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:report_book/src/presentation/routers/router.dart';
 
 @RoutePage()
-class HomeScreenPage extends StatelessWidget {
-  const HomeScreenPage({super.key});
+class HomeScreenStudentPage extends StatelessWidget {
+  const HomeScreenStudentPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
     return AutoTabsRouter(
+      homeIndex: 0,
       routes: [
-        const StudentsScreenRouter(),
+        AnnouncementScreenRouter(isTeacher: false),
+        ScoresScreenRouter(isTeacher: false),
         const ChatScreenRouter(),
-        TaskScreenRouter(),
-        AnnouncementScreenRouter(isTeacher: true),
+        TaskScreenRouter(isTeacher: false),
         const ProfileScreenRouter()
       ],
       transitionBuilder: (context, child, animation) => FadeTransition(
@@ -31,8 +32,12 @@ class HomeScreenPage extends StatelessWidget {
           selectedIndex: AutoTabsRouter.of(context).activeIndex,
           destinations: const [
             NavigationDestination(
-              icon: Icon(Icons.school_outlined),
-              label: 'Student',
+              icon: Icon(Icons.notifications_outlined),
+              label: 'Info',
+            ),
+            NavigationDestination(
+              icon: Icon(Icons.view_list),
+              label: 'Scores',
             ),
             NavigationDestination(
               icon: Icon(Icons.message_outlined),
@@ -41,10 +46,6 @@ class HomeScreenPage extends StatelessWidget {
             NavigationDestination(
               icon: Icon(Icons.calendar_month_outlined),
               label: 'Tasks',
-            ),
-            NavigationDestination(
-              icon: Icon(Icons.notifications_outlined),
-              label: 'Announcement',
             ),
             NavigationDestination(
               icon: Icon(Icons.person_outline),

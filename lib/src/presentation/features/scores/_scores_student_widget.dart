@@ -13,6 +13,12 @@ class _ScoresStudentWidget extends StatelessWidget {
           );
         }
 
+        if (state.scores.isEmpty) {
+          return const SizedBox.expand(
+            child: Center(child: Text('Scores is Empty')),
+          );
+        }
+
         return ListView.builder(
           itemCount: state.scores.length,
           itemBuilder: (context, index) {

@@ -13,7 +13,7 @@ class _ButtonSubmitLogin extends StatelessWidget {
       child: BlocConsumer<LoginCubit, LoginState>(
         listener: (context, state) => state.maybeWhen(
           orElse: () => null,
-          student: () => null,
+          student: () => AutoRouter.of(context).replace(const HomeScreenStudentRouter()),
           teacher: () =>
               AutoRouter.of(context).replace(const HomeScreenRouter()),
           notFoundUser: () => ScaffoldMessenger.of(context).showSnackBar(

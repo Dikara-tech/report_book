@@ -9,7 +9,7 @@ class ScoresListState with _$ScoresListState {
   }) = _ScoresListState;
 
   factory ScoresListState.create() => const ScoresListState(
-        isLoading: false,
+        isLoading: true,
         scores: [],
         isError: false,
       );

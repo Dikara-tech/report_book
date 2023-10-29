@@ -12,6 +12,7 @@ import 'package:report_book/src/presentation/features/create_student/create_stud
 import 'package:report_book/src/presentation/features/create_task/create_task_screen_page.dart';
 import 'package:report_book/src/presentation/features/domains/domains_screen_page.dart';
 import 'package:report_book/src/presentation/features/home/home_screen_page.dart';
+import 'package:report_book/src/presentation/features/home/home_screen_student_page.dart';
 import 'package:report_book/src/presentation/features/login/login_screen_page.dart';
 import 'package:report_book/src/presentation/features/profile/profile_screen_page.dart';
 import 'package:report_book/src/presentation/features/register_student/register_student_screen_page.dart';
@@ -41,7 +42,8 @@ class AuthGuard extends AutoRouteGuard {
       final userType = await _userRepository.getUserType();
       switch (userType) {
         case UserType.student:
-          resolver.next(false);
+          await resolver.redirect(const HomeScreenStudentRouter(),
+              replace: true);
         case UserType.teacher:
           await resolver.redirect(const HomeScreenRouter(), replace: true);
         default:
@@ -99,6 +101,17 @@ class AppRouter extends _$AppRouter {
       ],
     ),
     AutoRoute(
+      page: HomeScreenStudentRouter.page,
+      path: '/home/student',
+      children: [
+        AutoRoute(page: AnnouncementScreenRouter.page, path: 'announcements'),
+        AutoRoute(page: ChatScreenRouter.page, path: 'chats'),
+        AutoRoute(page: TaskScreenRouter.page, path: 'tasks'),
+        AutoRoute(page: ScoresScreenRouter.page, path: 'scores'),
+        AutoRoute(page: ProfileScreenRouter.page, path: 'profile'),
+      ],
+    ),
+    AutoRoute(
       page: ProfileScreenRouter.page,
       path: '/profile',
     ),
@@ -120,7 +133,7 @@ class AppRouter extends _$AppRouter {
     ),
     AutoRoute(
       page: ScoresScreenRouter.page,
-      path: '/scores/:studentId',
+      path: '/scores',
     ),
     AutoRoute(
       page: CreateScoreScreenRouter.page,

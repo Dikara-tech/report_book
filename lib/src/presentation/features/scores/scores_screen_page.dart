@@ -1,4 +1,3 @@
-import 'package:auto_route/annotations.dart';
 import 'package:dikara_core/dikara_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,13 +11,13 @@ part '_scores_student_widget.dart';
 @RoutePage()
 class ScoresScreenPage extends StatelessWidget {
   const ScoresScreenPage({
-    @PathParam() required this.studentId,
     @QueryParam() this.isTeacher = false,
+    @QueryParam() this.studentId,
     @QueryParam() this.nameStudent,
   });
 
-  final String studentId;
   final bool isTeacher;
+  final String? studentId;
   final String? nameStudent;
 
   @override
@@ -28,11 +27,19 @@ class ScoresScreenPage extends StatelessWidget {
         title: Text('Scores ${nameStudent ?? 'Student'} List'),
       ),
       body: BlocProvider(
-        create: (context) => ScoresListCubit.create(studentId),
+        create: (context) {
+          final studentId = this.studentId;
+          if (isTeacher && studentId != null) {
+            return ScoresListCubit.createForTeacher(studentId);
+          }
+          return ScoresListCubit.createForStudent();
+        },
         child: const _ScoresStudentWidget(),
       ),
-      floatingActionButton:
-          _FabButtonWidget(isTeacher: isTeacher, studentId: studentId),
+      floatingActionButton: _FabButtonWidget(
+        isTeacher: isTeacher,
+        studentId: studentId,
+      ),
     );
   }
 }

@@ -8,7 +8,9 @@ part '_task_content_list_widget.dart';
 
 @RoutePage()
 class TaskScreenPage extends StatelessWidget {
-  const TaskScreenPage({super.key});
+  const TaskScreenPage({@QueryParam() this.isTeacher = true});
+
+  final bool isTeacher;
 
   @override
   Widget build(BuildContext context) {
@@ -20,13 +22,13 @@ class TaskScreenPage extends StatelessWidget {
         create: (context) => TaskListCubit.create(),
         child: const _TaskContentListWidget(),
       ),
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: isTeacher ? FloatingActionButton(
         heroTag: 'task',
         onPressed: () {
           AutoRouter.of(context).push(const CreateTaskScreenRouter());
         },
         child: const Icon(Icons.add),
-      ),
+      ) : null,
     );
   }
 }
