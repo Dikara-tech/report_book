@@ -16,6 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$AnnouncementsState {
+  @JsonKey(includeIfNull: false)
+  String? get announcementId => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
   List<AnnouncementModel> get announcements =>
       throw _privateConstructorUsedError;
@@ -33,7 +35,10 @@ abstract class $AnnouncementsStateCopyWith<$Res> {
       _$AnnouncementsStateCopyWithImpl<$Res, AnnouncementsState>;
   @useResult
   $Res call(
-      {bool isLoading, List<AnnouncementModel> announcements, bool isError});
+      {@JsonKey(includeIfNull: false) String? announcementId,
+      bool isLoading,
+      List<AnnouncementModel> announcements,
+      bool isError});
 }
 
 /// @nodoc
@@ -49,11 +54,16 @@ class _$AnnouncementsStateCopyWithImpl<$Res, $Val extends AnnouncementsState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? announcementId = freezed,
     Object? isLoading = null,
     Object? announcements = null,
     Object? isError = null,
   }) {
     return _then(_value.copyWith(
+      announcementId: freezed == announcementId
+          ? _value.announcementId
+          : announcementId // ignore: cast_nullable_to_non_nullable
+              as String?,
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -79,7 +89,10 @@ abstract class _$$AnnouncementsStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {bool isLoading, List<AnnouncementModel> announcements, bool isError});
+      {@JsonKey(includeIfNull: false) String? announcementId,
+      bool isLoading,
+      List<AnnouncementModel> announcements,
+      bool isError});
 }
 
 /// @nodoc
@@ -93,11 +106,16 @@ class __$$AnnouncementsStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? announcementId = freezed,
     Object? isLoading = null,
     Object? announcements = null,
     Object? isError = null,
   }) {
     return _then(_$AnnouncementsStateImpl(
+      announcementId: freezed == announcementId
+          ? _value.announcementId
+          : announcementId // ignore: cast_nullable_to_non_nullable
+              as String?,
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -118,11 +136,15 @@ class __$$AnnouncementsStateImplCopyWithImpl<$Res>
 
 class _$AnnouncementsStateImpl implements _AnnouncementsState {
   const _$AnnouncementsStateImpl(
-      {required this.isLoading,
+      {@JsonKey(includeIfNull: false) this.announcementId,
+      required this.isLoading,
       required final List<AnnouncementModel> announcements,
       required this.isError})
       : _announcements = announcements;
 
+  @override
+  @JsonKey(includeIfNull: false)
+  final String? announcementId;
   @override
   final bool isLoading;
   final List<AnnouncementModel> _announcements;
@@ -138,7 +160,7 @@ class _$AnnouncementsStateImpl implements _AnnouncementsState {
 
   @override
   String toString() {
-    return 'AnnouncementsState(isLoading: $isLoading, announcements: $announcements, isError: $isError)';
+    return 'AnnouncementsState(announcementId: $announcementId, isLoading: $isLoading, announcements: $announcements, isError: $isError)';
   }
 
   @override
@@ -146,6 +168,8 @@ class _$AnnouncementsStateImpl implements _AnnouncementsState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AnnouncementsStateImpl &&
+            (identical(other.announcementId, announcementId) ||
+                other.announcementId == announcementId) &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
             const DeepCollectionEquality()
@@ -154,7 +178,7 @@ class _$AnnouncementsStateImpl implements _AnnouncementsState {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLoading,
+  int get hashCode => Object.hash(runtimeType, announcementId, isLoading,
       const DeepCollectionEquality().hash(_announcements), isError);
 
   @JsonKey(ignore: true)
@@ -167,10 +191,14 @@ class _$AnnouncementsStateImpl implements _AnnouncementsState {
 
 abstract class _AnnouncementsState implements AnnouncementsState {
   const factory _AnnouncementsState(
-      {required final bool isLoading,
+      {@JsonKey(includeIfNull: false) final String? announcementId,
+      required final bool isLoading,
       required final List<AnnouncementModel> announcements,
       required final bool isError}) = _$AnnouncementsStateImpl;
 
+  @override
+  @JsonKey(includeIfNull: false)
+  String? get announcementId;
   @override
   bool get isLoading;
   @override
