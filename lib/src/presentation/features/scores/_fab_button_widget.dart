@@ -3,11 +3,11 @@ part of 'scores_screen_page.dart';
 class _FabButtonWidget extends StatelessWidget {
   const _FabButtonWidget({
     required this.isTeacher,
-    required this.studentId,
+    this.studentId,
   });
 
   final bool isTeacher;
-  final String studentId;
+  final String? studentId;
 
   @override
   Widget build(BuildContext context) {
@@ -15,8 +15,11 @@ class _FabButtonWidget extends StatelessWidget {
       return FloatingActionButton(
         child: const Icon(Icons.add),
         onPressed: () {
-          AutoRouter.of(context)
-              .push(CreateScoreScreenRouter(studentId: studentId));
+          final studentId = this.studentId;
+          if (studentId != null) {
+            AutoRouter.of(context)
+                .push(CreateScoreScreenRouter(studentId: studentId));
+          }
         },
       );
     }
