@@ -22,9 +22,16 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     AnnouncementScreenRouter.name: (routeData) {
+      final queryParams = routeData.queryParams;
+      final args = routeData.argsAs<AnnouncementScreenRouterArgs>(
+          orElse: () => AnnouncementScreenRouterArgs(
+                  isTeacher: queryParams.getBool(
+                'isTeacher',
+                true,
+              )));
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const AnnouncementScreenPage(),
+        child: AnnouncementScreenPage(isTeacher: args.isTeacher),
       );
     },
     ChatContactScreenRouter.name: (routeData) {
@@ -113,6 +120,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const HomeScreenPage(),
       );
     },
+    HomeScreenStudentRouter.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const HomeScreenStudentPage(),
+      );
+    },
     LoginScreenRouter.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -142,22 +155,21 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     ScoresScreenRouter.name: (routeData) {
-      final pathParams = routeData.inheritedPathParams;
       final queryParams = routeData.queryParams;
       final args = routeData.argsAs<ScoresScreenRouterArgs>(
           orElse: () => ScoresScreenRouterArgs(
-                studentId: pathParams.getString('studentId'),
                 isTeacher: queryParams.getBool(
                   'isTeacher',
                   false,
                 ),
+                studentId: queryParams.optString('studentId'),
                 nameStudent: queryParams.optString('nameStudent'),
               ));
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: ScoresScreenPage(
-          studentId: args.studentId,
           isTeacher: args.isTeacher,
+          studentId: args.studentId,
           nameStudent: args.nameStudent,
         ),
       );
@@ -175,9 +187,16 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     TaskScreenRouter.name: (routeData) {
+      final queryParams = routeData.queryParams;
+      final args = routeData.argsAs<TaskScreenRouterArgs>(
+          orElse: () => TaskScreenRouterArgs(
+                  isTeacher: queryParams.getBool(
+                'isTeacher',
+                true,
+              )));
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const TaskScreenPage(),
+        child: TaskScreenPage(isTeacher: args.isTeacher),
       );
     },
   };
@@ -199,16 +218,33 @@ class AnnouncementDetailScreenRouter extends PageRouteInfo<void> {
 
 /// generated route for
 /// [AnnouncementScreenPage]
-class AnnouncementScreenRouter extends PageRouteInfo<void> {
-  const AnnouncementScreenRouter({List<PageRouteInfo>? children})
-      : super(
+class AnnouncementScreenRouter
+    extends PageRouteInfo<AnnouncementScreenRouterArgs> {
+  AnnouncementScreenRouter({
+    bool isTeacher = true,
+    List<PageRouteInfo>? children,
+  }) : super(
           AnnouncementScreenRouter.name,
+          args: AnnouncementScreenRouterArgs(isTeacher: isTeacher),
+          rawQueryParams: {'isTeacher': isTeacher},
           initialChildren: children,
         );
 
   static const String name = 'AnnouncementScreenRouter';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<AnnouncementScreenRouterArgs> page =
+      PageInfo<AnnouncementScreenRouterArgs>(name);
+}
+
+class AnnouncementScreenRouterArgs {
+  const AnnouncementScreenRouterArgs({this.isTeacher = true});
+
+  final bool isTeacher;
+
+  @override
+  String toString() {
+    return 'AnnouncementScreenRouterArgs{isTeacher: $isTeacher}';
+  }
 }
 
 /// generated route for
@@ -430,6 +466,20 @@ class HomeScreenRouter extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [HomeScreenStudentPage]
+class HomeScreenStudentRouter extends PageRouteInfo<void> {
+  const HomeScreenStudentRouter({List<PageRouteInfo>? children})
+      : super(
+          HomeScreenStudentRouter.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'HomeScreenStudentRouter';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [LoginScreenPage]
 class LoginScreenRouter extends PageRouteInfo<void> {
   const LoginScreenRouter({List<PageRouteInfo>? children})
@@ -506,20 +556,20 @@ class ScoreDetailScreenRouterArgs {
 /// [ScoresScreenPage]
 class ScoresScreenRouter extends PageRouteInfo<ScoresScreenRouterArgs> {
   ScoresScreenRouter({
-    required String studentId,
     bool isTeacher = false,
+    String? studentId,
     String? nameStudent,
     List<PageRouteInfo>? children,
   }) : super(
           ScoresScreenRouter.name,
           args: ScoresScreenRouterArgs(
-            studentId: studentId,
             isTeacher: isTeacher,
+            studentId: studentId,
             nameStudent: nameStudent,
           ),
-          rawPathParams: {'studentId': studentId},
           rawQueryParams: {
             'isTeacher': isTeacher,
+            'studentId': studentId,
             'nameStudent': nameStudent,
           },
           initialChildren: children,
@@ -533,20 +583,20 @@ class ScoresScreenRouter extends PageRouteInfo<ScoresScreenRouterArgs> {
 
 class ScoresScreenRouterArgs {
   const ScoresScreenRouterArgs({
-    required this.studentId,
     this.isTeacher = false,
+    this.studentId,
     this.nameStudent,
   });
 
-  final String studentId;
-
   final bool isTeacher;
+
+  final String? studentId;
 
   final String? nameStudent;
 
   @override
   String toString() {
-    return 'ScoresScreenRouterArgs{studentId: $studentId, isTeacher: $isTeacher, nameStudent: $nameStudent}';
+    return 'ScoresScreenRouterArgs{isTeacher: $isTeacher, studentId: $studentId, nameStudent: $nameStudent}';
   }
 }
 
@@ -580,14 +630,30 @@ class TaskDetailScreenRouter extends PageRouteInfo<void> {
 
 /// generated route for
 /// [TaskScreenPage]
-class TaskScreenRouter extends PageRouteInfo<void> {
-  const TaskScreenRouter({List<PageRouteInfo>? children})
-      : super(
+class TaskScreenRouter extends PageRouteInfo<TaskScreenRouterArgs> {
+  TaskScreenRouter({
+    bool isTeacher = true,
+    List<PageRouteInfo>? children,
+  }) : super(
           TaskScreenRouter.name,
+          args: TaskScreenRouterArgs(isTeacher: isTeacher),
+          rawQueryParams: {'isTeacher': isTeacher},
           initialChildren: children,
         );
 
   static const String name = 'TaskScreenRouter';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<TaskScreenRouterArgs> page =
+      PageInfo<TaskScreenRouterArgs>(name);
+}
+
+class TaskScreenRouterArgs {
+  const TaskScreenRouterArgs({this.isTeacher = true});
+
+  final bool isTeacher;
+
+  @override
+  String toString() {
+    return 'TaskScreenRouterArgs{isTeacher: $isTeacher}';
+  }
 }
