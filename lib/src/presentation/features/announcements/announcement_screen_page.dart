@@ -6,7 +6,9 @@ import 'package:report_book/src/presentation/routers/router.dart';
 
 @RoutePage()
 class AnnouncementScreenPage extends StatefulWidget {
-  const AnnouncementScreenPage({super.key});
+  const AnnouncementScreenPage({@QueryParam() this.isTeacher = true});
+
+  final bool isTeacher;
 
   @override
   State<AnnouncementScreenPage> createState() => _AnnouncementScreenPageState();
@@ -56,12 +58,12 @@ class _AnnouncementScreenPageState extends State<AnnouncementScreenPage> {
           );
         },
       ),
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: widget.isTeacher ? FloatingActionButton(
         heroTag: 'announcement',
         onPressed: () => AutoRouter.of(context)
             .push(const CreateAnnouncementScreenRouter()),
         child: const Icon(Icons.add),
-      ),
+      ) : null,
     );
   }
 }
