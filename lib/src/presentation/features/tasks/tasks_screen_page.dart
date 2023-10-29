@@ -1,8 +1,10 @@
 import 'package:dikara_core/dikara_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:report_book/src/presentation/features/tasks/bloc/edit_task/edit_task_cubit.dart';
 import 'package:report_book/src/presentation/features/tasks/bloc/task_list/task_list_cubit.dart';
 import 'package:report_book/src/presentation/routers/router.dart';
+import 'package:report_book_core/report_book_core.dart';
 
 part '_task_content_list_widget.dart';
 
@@ -18,17 +20,26 @@ class TaskScreenPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Tasks'),
       ),
-      body: Provider(
-        create: (context) => TaskListCubit.create(),
+      body: MultiBlocProvider(
+        providers: [
+          Provider(
+            create: (context) => EditTaskCubit.create(),
+          ),
+          Provider(
+            create: (context) => TaskListCubit.create(),
+          )
+        ],
         child: const _TaskContentListWidget(),
       ),
-      floatingActionButton: isTeacher ? FloatingActionButton(
-        heroTag: 'task',
-        onPressed: () {
-          AutoRouter.of(context).push(const CreateTaskScreenRouter());
-        },
-        child: const Icon(Icons.add),
-      ) : null,
+      floatingActionButton: isTeacher
+          ? FloatingActionButton(
+              heroTag: 'task',
+              onPressed: () {
+                AutoRouter.of(context).push(const CreateTaskScreenRouter());
+              },
+              child: const Icon(Icons.add),
+            )
+          : null,
     );
   }
 }

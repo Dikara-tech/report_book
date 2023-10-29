@@ -10,6 +10,7 @@ class TaskFormProvider extends ValueNotifier<TaskModel> {
           taskDetail: '',
           createdAt: 0,
           taskTypeModel: TaskTypeModel.DefaultTask,
+          isCheck: false,
         ),
       );
 

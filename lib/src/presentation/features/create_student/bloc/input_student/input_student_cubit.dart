@@ -22,7 +22,7 @@ class InputStudentCubit extends Cubit<ResourceState<void>> {
   Future<void> _register(UserModel userModel) async {
     try {
       emit(const ResourceLoading());
-      await _userRepository.createUser(userModel);
+      await _userRepository.createUser(userModel, true);
       emit(const ResourceSuccess(data: null));
     } catch (error) {
       emit(const ResourceState.error());
