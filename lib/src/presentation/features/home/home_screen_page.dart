@@ -11,12 +11,12 @@ class HomeScreenPage extends StatelessWidget {
     final theme = Theme.of(context);
 
     return AutoTabsRouter(
-      routes: const [
-        StudentsScreenRouter(),
-        ChatScreenRouter(),
+      routes: [
+        const StudentsScreenRouter(),
+        const ChatScreenRouter(),
         TaskScreenRouter(),
-        AnnouncementScreenRouter(),
-        ProfileScreenRouter()
+        AnnouncementScreenRouter(isTeacher: true),
+        const ProfileScreenRouter()
       ],
       transitionBuilder: (context, child, animation) => FadeTransition(
         opacity: animation,
