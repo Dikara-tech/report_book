@@ -6,50 +6,54 @@ class _RadioTaskWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final taskFormWatch = context.watch<TaskFormProvider>().value.taskTypeModel;
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Text('Task Type', style: theme.textTheme.titleSmall),
-          ListTile(
-            leading: ValueListenableBuilder(
-              valueListenable: context.read<TaskFormProvider>(),
-              builder: (context, value, child) {
-                return Radio<TaskTypeModel>(
-                  value: TaskTypeModel.DefaultTask,
-                  groupValue: value.taskTypeModel,
-                  onChanged: (value) {
-                    if (value != null) {
-                      context.read<TaskFormProvider>().onChangeTaskType(value);
-                    }
-                  },
-                );
-              },
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: Text(
+              'Task Type',
+              style: theme.textTheme.titleSmall,
             ),
-            title: const Text('Default Task'),
           ),
-          ListTile(
-            leading: ValueListenableBuilder(
-              valueListenable: context.read<TaskFormProvider>(),
-              builder: (context, value, child) {
-                return Radio<TaskTypeModel>(
-                  value: TaskTypeModel.MemoizationTask,
-                  groupValue: value.taskTypeModel,
-                  onChanged: (value) {
-                    if (value != null) {
-                      context.read<TaskFormProvider>().onChangeTaskType(value);
-                    }
-                  },
-                );
-              },
-            ),
-            title: const Text('Memoization'),
+          RadioListTile(
+            value: TaskTypeModel.akhlak,
+            groupValue: taskFormWatch,
+            title: const Text('Akhlak'),
+            onChanged: (value) {
+              final taskType = value;
+              if (taskType != null) onChange(context, taskType);
+            },
+          ),
+          RadioListTile(
+            value: TaskTypeModel.mapel,
+            groupValue: taskFormWatch,
+            title: const Text('Mapel'),
+            onChanged: (value) {
+              final taskType = value;
+              if (taskType != null) onChange(context, taskType);
+            },
+          ),
+          RadioListTile<TaskTypeModel>(
+            value: TaskTypeModel.hafalan,
+            groupValue: taskFormWatch,
+            title: const Text('Hafalan'),
+            onChanged: (value) {
+              final taskType = value;
+              if (taskType != null) onChange(context, taskType);
+            },
           )
         ],
       ),
     );
+  }
+
+  void onChange(BuildContext context, TaskTypeModel taskTypeModel) {
+    context.read<TaskFormProvider>().onChangeTaskType(taskTypeModel);
   }
 }

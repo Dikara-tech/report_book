@@ -3,10 +3,9 @@ import 'package:dikara_core/dikara_core.dart';
 import 'package:report_book_core/report_book_core.dart';
 
 class CreateTaskCubit extends Cubit<ResourceState<void>> {
-  final ClassRepository _classGroupRepository;
+  final TaskRepository _taskRepository;
 
-  CreateTaskCubit(this._classGroupRepository)
-      : super(const ResourceState.initial());
+  CreateTaskCubit(this._taskRepository) : super(const ResourceState.initial());
 
   factory CreateTaskCubit.create() => CreateTaskCubit(inject.get());
 
@@ -16,14 +15,17 @@ class CreateTaskCubit extends Cubit<ResourceState<void>> {
       final newTaskModel = taskModel.copyWith(
         createdAt: DateTime.now().millisecondsSinceEpoch,
       );
-      final responseTaskId =
-          await _classGroupRepository.createTask(newTaskModel);
-      if (responseTaskId != null) {
-        emit(const ResourceSuccess(data: null));
-      } else {
-        emit(const ResourceError());
-      }
+      await _taskRepository.createTask(newTaskModel);
+      emit(const ResourceSuccess(data: null));
     } catch (error) {
+      emit(const ResourceError());
+    }
+  }
+
+  Future<void> updateTask(TaskModel taskModel) async {
+    try {
+      emit(const ResourceLoading());
+    } catch (e) {
       emit(const ResourceError());
     }
   }

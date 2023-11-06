@@ -7,17 +7,14 @@ import 'package:report_book/src/presentation/features/chat_contact/chat_contact_
 import 'package:report_book/src/presentation/features/chat_detail/chat_detail_screen_page.dart';
 import 'package:report_book/src/presentation/features/chats/chat_screen_page.dart';
 import 'package:report_book/src/presentation/features/create_announcement/create_announcement_screen_page.dart';
-import 'package:report_book/src/presentation/features/create_score/create_score_screen_page.dart';
 import 'package:report_book/src/presentation/features/create_student/create_student_screen_page.dart';
 import 'package:report_book/src/presentation/features/create_task/create_task_screen_page.dart';
-import 'package:report_book/src/presentation/features/domains/domains_screen_page.dart';
 import 'package:report_book/src/presentation/features/home/home_screen_page.dart';
 import 'package:report_book/src/presentation/features/home/home_screen_student_page.dart';
 import 'package:report_book/src/presentation/features/login/login_screen_page.dart';
 import 'package:report_book/src/presentation/features/profile/profile_screen_page.dart';
 import 'package:report_book/src/presentation/features/register_student/register_student_screen_page.dart';
-import 'package:report_book/src/presentation/features/score_detail/score_detail_screen_page.dart';
-import 'package:report_book/src/presentation/features/scores/scores_screen_page.dart';
+import 'package:report_book/src/presentation/features/reports/report_screen_page.dart';
 import 'package:report_book/src/presentation/features/students/student_screen_page.dart';
 import 'package:report_book/src/presentation/features/task_detail/task_detail_screen_page.dart';
 import 'package:report_book/src/presentation/features/tasks/tasks_screen_page.dart';
@@ -82,7 +79,7 @@ class AppRouter extends _$AppRouter {
     ),
     AutoRoute(
       page: CreateTaskScreenRouter.page,
-      path: '/create-task',
+      path: '/create-task/:studentId',
     ),
     AutoRoute(
       page: RegisterStudentScreenRouter.page,
@@ -94,6 +91,7 @@ class AppRouter extends _$AppRouter {
       children: [
         RedirectRoute(path: '', redirectTo: 'students'),
         AutoRoute(page: StudentsScreenRouter.page, path: 'students'),
+        AutoRoute(page: ReportScreenRouter.page, path: 'report'),
         AutoRoute(page: ChatScreenRouter.page, path: 'chats'),
         AutoRoute(page: AnnouncementScreenRouter.page, path: 'announcements'),
         AutoRoute(page: TaskScreenRouter.page, path: 'tasks'),
@@ -104,10 +102,10 @@ class AppRouter extends _$AppRouter {
       page: HomeScreenStudentRouter.page,
       path: '/home/student',
       children: [
+        RedirectRoute(path: '', redirectTo: AnnouncementScreenRouter.name),
         AutoRoute(page: AnnouncementScreenRouter.page, path: 'announcements'),
         AutoRoute(page: ChatScreenRouter.page, path: 'chats'),
         AutoRoute(page: TaskScreenRouter.page, path: 'tasks'),
-        AutoRoute(page: ScoresScreenRouter.page, path: 'scores'),
         AutoRoute(page: ProfileScreenRouter.page, path: 'profile'),
       ],
     ),
@@ -117,7 +115,7 @@ class AppRouter extends _$AppRouter {
     ),
     AutoRoute(
       page: TaskDetailScreenRouter.page,
-      path: '/task-detail',
+      path: '/task-detail/:taskId/:assignId',
     ),
     AutoRoute(
       page: CreateStudentScreenRouter.page,
@@ -132,20 +130,12 @@ class AppRouter extends _$AppRouter {
       path: '/chat_detail/:senderId',
     ),
     AutoRoute(
-      page: ScoresScreenRouter.page,
-      path: '/scores',
+      page: StudentsScreenRouter.page,
+      path: '/assign_task',
     ),
     AutoRoute(
-      page: CreateScoreScreenRouter.page,
-      path: '/scores/create/:studentId',
-    ),
-    AutoRoute(
-      page: DomainsScreenRouter.page,
-      path: '/domains',
-    ),
-    AutoRoute(
-      page: ScoreDetailScreenRouter.page,
-      path: '/score/detail/:scoreById',
-    ),
+      page: TaskScreenRouter.page,
+      path: '/report/task',
+    )
   ];
 }

@@ -5,7 +5,6 @@ import 'package:report_book/src/presentation/features/create_student/bloc/input_
 import 'package:report_book/src/presentation/features/create_student/provider/register_form/register_form_provider.dart';
 import 'package:report_book/src/widgets/custom_button_widget.dart';
 import 'package:report_book/src/widgets/custom_text_field_widget.dart';
-import 'package:report_book_core/report_book_core.dart';
 
 part '_button_submit_widget.dart';
 
@@ -16,13 +15,11 @@ part '_text_email_widget.dart';
 @RoutePage()
 class CreateStudentScreenPage extends StatelessWidget {
   const CreateStudentScreenPage({
-    @QueryParam() this.isRegisterPage = true,
     @QueryParam() this.userId,
     @QueryParam() this.name,
     @QueryParam() this.email,
   });
 
-  final bool isRegisterPage;
   final String? userId;
   final String? email;
   final String? name;
@@ -36,19 +33,15 @@ class CreateStudentScreenPage extends StatelessWidget {
       body: MultiProvider(
         providers: [
           ChangeNotifierProvider(
-            create: (context) => RegisterFormProvider(
-              name,
-              email,
+            create: (context) => RegisterFormProvider.create(
+              userId: userId,
+              name: name,
+              email: email,
             ),
           ),
-          BlocProvider(
-            create: (context) => InputStudentCubit.create(isRegisterPage),
-          ),
+          BlocProvider(create: (context) => InputStudentCubit.create()),
         ],
-        child: _RegisterFormContentWidget(
-          isRegister: isRegisterPage,
-          idUser: userId,
-        ),
+        child: _RegisterFormContentWidget(studentId: userId),
       ),
     );
   }
@@ -56,12 +49,10 @@ class CreateStudentScreenPage extends StatelessWidget {
 
 class _RegisterFormContentWidget extends StatelessWidget {
   const _RegisterFormContentWidget({
-    this.isRegister = false,
-    this.idUser,
+    this.studentId,
   });
 
-  final bool isRegister;
-  final String? idUser;
+  final String? studentId;
 
   @override
   Widget build(BuildContext context) {
@@ -89,8 +80,21 @@ class _RegisterFormContentWidget extends StatelessWidget {
             const _TextEmailWidget(),
             const _TextNameWidget(),
             _ButtonSubmitWidget(
-              isRegister: isRegister,
-              idUser: idUser,
+              idUser: studentId,
+              onTapAction: () {
+                final registerProvider = context.read<RegisterFormProvider>();
+                final studentId = this.studentId;
+                if (registerProvider.validateForm && studentId != null) {
+                  context
+                      .read<InputStudentCubit>()
+                      .updateUser(registerProvider.userModel);
+                } else {
+                  context.read<InputStudentCubit>().register(
+                        registerProvider.userModel.name,
+                        registerProvider.userModel.email,
+                      );
+                }
+              },
             ),
           ],
         ),

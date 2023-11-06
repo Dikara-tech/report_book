@@ -10,38 +10,21 @@ part 'task_list_state.dart';
 part 'task_list_cubit.freezed.dart';
 
 class TaskListCubit extends Cubit<TaskListState> {
-  final ClassRepository _classRepository;
-  final UserRepository _userRepository;
+  final TaskRepository _taskRepository;
+  final String? studentId;
   StreamSubscription<List<TaskModel>>? _streamSubscription;
 
-  TaskListCubit(
-    this._classRepository,
-    this._userRepository,
-  ) : super(TaskListState.create());
+  TaskListCubit(this._taskRepository, this.studentId)
+      : super(TaskListState.create());
 
-  factory TaskListCubit.create() =>
-      TaskListCubit(inject.get(), inject.get())..onListenTasks();
+  factory TaskListCubit.create({String? studentId}) =>
+      TaskListCubit(inject.get(), studentId)..onListenTasks();
 
-  Future<void> onListenTasks() async {
-    try {
-      emit(state.copyWith(isLoading: true));
-      final userClassId = await _userRepository.getIdMemberClassUser();
-      if (userClassId != null) {
-        emit(state.copyWith(isLoading: false));
-        _onListen(userClassId);
-      } else {
-        emit(state.copyWith(isLoading: false, isError: true));
-      }
-    } catch (error) {
-      emit(state.copyWith(isLoading: false, isError: true));
-    }
-  }
-
-  void _onListen(String classId) {
+  void onListenTasks() {
     _streamSubscription?.cancel();
     _streamSubscription =
-        _classRepository.watchTaskClassGroup(classId).listen((event) {
-      emit(state.copyWith(tasks: event));
+        _taskRepository.watchTaskUser(studentId).listen((event) {
+      emit(state.copyWith(isLoading: false, tasks: event));
     });
   }
 

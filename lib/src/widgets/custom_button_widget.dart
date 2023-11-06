@@ -1,3 +1,4 @@
+import 'package:dikara_core/dikara_core.dart';
 import 'package:flutter/material.dart';
 
 class CustomButtonWidget extends StatelessWidget {
@@ -16,17 +17,12 @@ class CustomButtonWidget extends StatelessWidget {
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
-      child: ElevatedButton(
+      child: GoButton(
+        text: titleButton,
+        textStyle: theme.textTheme.titleMedium
+                ?.copyWith(color: Colors.white, fontWeight: FontWeight.bold) ??
+            const TextStyle(),
         onPressed: onAction,
-        style: ElevatedButton.styleFrom(
-            backgroundColor: theme.colorScheme.primaryContainer),
-        child: Text(
-          titleButton,
-          style: theme.textTheme.titleMedium?.copyWith(
-            color: theme.colorScheme.onPrimaryContainer,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
       ),
     );
   }

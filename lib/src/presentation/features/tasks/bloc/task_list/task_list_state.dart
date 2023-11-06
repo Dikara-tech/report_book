@@ -9,7 +9,7 @@ class TaskListState with _$TaskListState {
   }) = _TaskListState;
 
   factory TaskListState.create() => const TaskListState(
-        isLoading: false,
+        isLoading: true,
         tasks: [],
         isError: false,
       );
