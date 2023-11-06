@@ -17,7 +17,7 @@ class HomeScreenStudentPage extends StatelessWidget {
         AnnouncementScreenRouter(isTeacher: false),
         ChatScreenRouter(isTeacher: false),
         TaskScreenRouter(isTeacher: false),
-        const ProfileScreenRouter()
+        ProfileScreenRouter(isTeacherMenu: false)
       ],
       transitionBuilder: (context, child, animation) => FadeTransition(
         opacity: animation,

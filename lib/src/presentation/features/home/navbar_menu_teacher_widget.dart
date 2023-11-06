@@ -80,7 +80,7 @@ class _NavBarMenuTeacherWidgetState extends State<NavBarMenuTeacherWidget> {
               await AutoRouter.of(context).pop();
               if (mounted) {
                 unawaited(
-                    AutoRouter.of(context).replace(const ProfileScreenRouter()));
+                    AutoRouter.of(context).replace(ProfileScreenRouter()));
               }
             },
           ),

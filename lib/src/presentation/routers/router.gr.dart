@@ -141,9 +141,16 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     ProfileScreenRouter.name: (routeData) {
+      final queryParams = routeData.queryParams;
+      final args = routeData.argsAs<ProfileScreenRouterArgs>(
+          orElse: () => ProfileScreenRouterArgs(
+                  isTeacherMenu: queryParams.getBool(
+                'isTeacherMenu',
+                true,
+              )));
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const ProfileScreenPage(),
+        child: ProfileScreenPage(isTeacherMenu: args.isTeacherMenu),
       );
     },
     RegisterStudentScreenRouter.name: (routeData) {
@@ -547,16 +554,32 @@ class LoginScreenRouter extends PageRouteInfo<void> {
 
 /// generated route for
 /// [ProfileScreenPage]
-class ProfileScreenRouter extends PageRouteInfo<void> {
-  const ProfileScreenRouter({List<PageRouteInfo>? children})
-      : super(
+class ProfileScreenRouter extends PageRouteInfo<ProfileScreenRouterArgs> {
+  ProfileScreenRouter({
+    bool isTeacherMenu = true,
+    List<PageRouteInfo>? children,
+  }) : super(
           ProfileScreenRouter.name,
+          args: ProfileScreenRouterArgs(isTeacherMenu: isTeacherMenu),
+          rawQueryParams: {'isTeacherMenu': isTeacherMenu},
           initialChildren: children,
         );
 
   static const String name = 'ProfileScreenRouter';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<ProfileScreenRouterArgs> page =
+      PageInfo<ProfileScreenRouterArgs>(name);
+}
+
+class ProfileScreenRouterArgs {
+  const ProfileScreenRouterArgs({this.isTeacherMenu = true});
+
+  final bool isTeacherMenu;
+
+  @override
+  String toString() {
+    return 'ProfileScreenRouterArgs{isTeacherMenu: $isTeacherMenu}';
+  }
 }
 
 /// generated route for
