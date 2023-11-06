@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:dikara_core/dikara_core.dart';
 import 'package:flutter/material.dart';
 import 'package:report_book/src/presentation/routers/router.dart';
 
@@ -14,8 +15,7 @@ class HomeScreenStudentPage extends StatelessWidget {
       homeIndex: 0,
       routes: [
         AnnouncementScreenRouter(isTeacher: false),
-        ScoresScreenRouter(isTeacher: false),
-        const ChatScreenRouter(),
+        ChatScreenRouter(isTeacher: false),
         TaskScreenRouter(isTeacher: false),
         const ProfileScreenRouter()
       ],
@@ -34,10 +34,6 @@ class HomeScreenStudentPage extends StatelessWidget {
             NavigationDestination(
               icon: Icon(Icons.notifications_outlined),
               label: 'Info',
-            ),
-            NavigationDestination(
-              icon: Icon(Icons.view_list),
-              label: 'Scores',
             ),
             NavigationDestination(
               icon: Icon(Icons.message_outlined),

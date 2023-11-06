@@ -1,9 +1,9 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:dikara_core/dikara_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:report_book/src/presentation/features/announcements/bloc/announcements/announcements_cubit.dart';
 import 'package:report_book/src/presentation/features/announcements/bloc/delete_announcement/delete_announcement_cubit.dart';
+import 'package:report_book/src/presentation/features/home/navbar_menu_teacher_widget.dart';
 import 'package:report_book/src/presentation/routers/router.dart';
 
 @RoutePage()
@@ -40,9 +40,8 @@ class _AnnouncementScreenPageState extends State<AnnouncementScreenPage> {
     final theme = Theme.of(context);
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Annoucements'),
-      ),
+      appBar: AppBar(title: const Text('Annoucements')),
+      drawer: widget.isTeacher ? const NavBarMenuTeacherWidget() : null,
       body: BlocProvider.value(
         value: _deleteAnnouncementCubit,
         child: BlocListener<DeleteAnnouncementCubit, ResourceState<void>>(
@@ -105,7 +104,6 @@ class _AnnouncementScreenPageState extends State<AnnouncementScreenPage> {
 
 class _DeleteButton extends StatelessWidget {
   const _DeleteButton({
-    super.key,
     required this.isTeacher,
     this.announcementID,
   });

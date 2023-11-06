@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:report_book/src/presentation/features/create_task/bloc/create_task/create_task_cubit.dart';
 import 'package:report_book/src/presentation/features/create_task/providers/form/task_form_provider.dart';
+import 'package:report_book/src/presentation/routers/router.dart';
 import 'package:report_book/src/widgets/custom_button_widget.dart';
 import 'package:report_book/src/widgets/custom_text_field_widget.dart';
 import 'package:report_book_core/report_book_core.dart';
@@ -15,9 +16,31 @@ part '_textfield_detail_task_widget.dart';
 
 part '_radio_task_widget.dart';
 
+part '_textfield_assigned_task_widget.dart';
+
+part '_button_update_task_widget.dart';
+
 @RoutePage()
 class CreateTaskScreenPage extends StatelessWidget {
-  const CreateTaskScreenPage({super.key});
+  const CreateTaskScreenPage({
+    @QueryParam() this.taskId,
+    @QueryParam() this.studentId,
+    @QueryParam() this.title,
+    @QueryParam() this.assignedName,
+    @QueryParam() this.detailTask,
+    @QueryParam() this.taskTypeModel,
+    @QueryParam() this.isTaskDone = false,
+    @QueryParam() this.isEdit = true,
+  });
+
+  final String? taskId;
+  final String? studentId;
+  final String? title;
+  final String? assignedName;
+  final String? detailTask;
+  final TaskTypeModel? taskTypeModel;
+  final bool isTaskDone;
+  final bool isEdit;
 
   @override
   Widget build(BuildContext context) {
@@ -25,17 +48,29 @@ class CreateTaskScreenPage extends StatelessWidget {
       appBar: AppBar(title: const Text('Create Task')),
       body: MultiProvider(
         providers: [
-          ChangeNotifierProvider(create: (context) => TaskFormProvider.create()),
+          ChangeNotifierProvider(
+            create: (context) => TaskFormProvider.create(
+              taskId: taskId,
+              assignId: studentId,
+              title: title,
+              detail: detailTask,
+              assignName: assignedName,
+              taskTypeModel: taskTypeModel,
+              isDone: isTaskDone,
+            ),
+          ),
           BlocProvider(create: (context) => CreateTaskCubit.create())
         ],
-        child: const _ContentCreateTask(),
+        child: _ContentCreateTask(isEdit),
       ),
     );
   }
 }
 
 class _ContentCreateTask extends StatelessWidget {
-  const _ContentCreateTask();
+  const _ContentCreateTask(this.isEdit);
+
+  final bool isEdit;
 
   @override
   Widget build(BuildContext context) {
@@ -55,14 +90,14 @@ class _ContentCreateTask extends StatelessWidget {
           ),
         ),
       ),
-      child: const Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
+      child: ListView(
         children: [
-          _TextFieldTitleWidget(),
-          _TextFieldDetailTaskWidget(),
-          _RadioTaskWidget(),
-          _ButtonCreateTaskWidget(),
+          const _TextFieldTitleWidget(),
+          const _TextFieldAssignedTaskWidget(),
+          const _TextFieldDetailTaskWidget(),
+          const _RadioTaskWidget(),
+          if (!isEdit) const _ButtonCreateTaskWidget(),
+          if (isEdit) const _ButtonUpdateTaskWidget()
         ],
       ),
     );

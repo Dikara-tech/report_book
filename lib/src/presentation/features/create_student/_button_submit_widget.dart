@@ -2,12 +2,12 @@ part of 'create_student_screen_page.dart';
 
 class _ButtonSubmitWidget extends StatelessWidget {
   const _ButtonSubmitWidget({
-    this.isRegister = true,
     this.idUser,
+    this.onTapAction,
   });
 
-  final bool isRegister;
   final String? idUser;
+  final VoidCallback? onTapAction;
 
   @override
   Widget build(BuildContext context) {
@@ -18,25 +18,13 @@ class _ButtonSubmitWidget extends StatelessWidget {
       child: BlocBuilder<InputStudentCubit, ResourceState<void>>(
         builder: (context, state) => state.maybeWhen(
             orElse: () => CustomButtonWidget(
-                  titleButton:
-                      isRegister ? 'Register Student' : 'Update Student',
-                  onAction: () {
-                    final registerProvider =
-                        context.read<RegisterFormProvider>();
-                    if (registerProvider.validateForm) {
-                      final registerModel = UserModel(
-                        id: idUser,
-                        name: registerProvider.name,
-                        userType: UserType.student,
-                        createdAt: DateTime.now().millisecondsSinceEpoch,
-                        email: registerProvider.email,
-                      );
-                      context.read<InputStudentCubit>().submit(registerModel);
-                    }
-                  },
-                ),
-            loading: (data) => const CustomButtonWidget(
-                titleButton: 'Register Student', onAction: null)),
+                titleButton:
+                    idUser == null ? 'Register Student' : 'Update Student',
+                onAction: onTapAction),
+            loading: (data) => CustomButtonWidget(
+                titleButton:
+                    idUser == null ? 'Register Student' : 'Update Student',
+                onAction: null)),
       ),
     );
   }

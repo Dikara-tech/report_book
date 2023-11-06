@@ -1,36 +1,51 @@
 import 'package:flutter/cupertino.dart';
+import 'package:report_book_core/report_book_core.dart';
 
 class RegisterFormProvider extends ChangeNotifier {
-  String? _name;
-
-  String? _email;
+  UserModel _userModel;
 
   String? _errorTextName;
 
   String? _errorTextEmail;
 
-  RegisterFormProvider(this._name, this._email);
+  RegisterFormProvider(this._userModel);
+
+  factory RegisterFormProvider.create({
+    String? userId,
+    String? name,
+    String? email,
+  }) =>
+      RegisterFormProvider(
+        UserModel(
+          id: userId ?? '0',
+          name: name ?? '',
+          userType: UserType.student,
+          email: email ?? '',
+        ),
+      );
 
   String? get errorText => _errorTextName;
 
   String? get errorTextEmail => _errorTextEmail;
 
-  String get name => _name ?? '';
+  UserModel get userModel => _userModel;
 
-  String get email => _email ?? '';
+  void changeName(String name) {
+    _userModel = _userModel.copyWith(name: name);
+  }
 
-  set name(String name) => _name = name;
-
-  set email(String email) => _email = email;
+  void changeEmail(String email) {
+    _userModel = _userModel.copyWith(email: email);
+  }
 
   bool _validateNameForm() {
-    if (_name == null || (_name?.isEmpty ?? false)) {
+    if (_userModel.name.isEmpty) {
       _errorTextName = 'fill the blank';
       notifyListeners();
       return false;
     }
 
-    if (_email == null || (_email?.isEmpty ?? false)) {
+    if (_userModel.email.isEmpty) {
       _errorTextEmail = 'fill the blank';
       notifyListeners();
       return false;
