@@ -53,13 +53,7 @@ class TaskDetailScreenPage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Task Detail'),
-          actions: [
-            if (isEnableEdit)
-              IconButton(
-                onPressed: () => deleteTask(context),
-                icon: const Icon(Icons.delete),
-              )
-          ],
+          actions: [if (isEnableEdit) const _ButtonDeleteTask()],
         ),
         body: BlocListener<EditTaskCubit, ResourceState<void>>(
           listener: (context, state) => state.maybeWhen(
@@ -99,12 +93,27 @@ class TaskDetailScreenPage extends StatelessWidget {
       ),
     );
   }
+}
+
+class _ButtonDeleteTask extends StatelessWidget {
+  const _ButtonDeleteTask();
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      onPressed: () => deleteTask(context),
+      icon: const Icon(Icons.delete),
+    );
+  }
 
   void deleteTask(BuildContext context) {
     GoSimpleDialog.showDialog(
       context,
       title: 'Delete Task',
       message: 'will you delete task?',
+      onConfirm: () {
+        context.read<EditTaskCubit>().deleteTask();
+      },
     );
   }
 }

@@ -11,14 +11,22 @@ class _ButtonSaveWidget extends StatelessWidget {
 
     return SizedBox(
       width: sizeWidth,
-      child: CustomButtonWidget(
-        titleButton: 'Update Task',
-        onAction: () {
-          final checkBox = context.read<CheckBoxProvider>().value;
-          context
-              .read<EditTaskCubit>()
-              .changeStatusTask(checkBox, taskTypeModel);
-        },
+      child: BlocBuilder<EditTaskCubit, ResourceState<void>>(
+        builder: (context, state) => state.maybeWhen(
+          orElse: () => CustomButtonWidget(
+            titleButton: 'Update Task',
+            onAction: () {
+              final checkBox = context.read<CheckBoxProvider>().value;
+              context
+                  .read<EditTaskCubit>()
+                  .changeStatusTask(checkBox, taskTypeModel);
+            },
+          ),
+          loading: (data) => const CustomButtonWidget(
+            titleButton: 'Update Task',
+            onAction: null,
+          ),
+        ),
       ),
     );
   }
