@@ -8,18 +8,5 @@ class ProfileClassCubit extends Cubit<ResourceState<String>> {
 
   factory ProfileClassCubit.create() => ProfileClassCubit(inject.get());
 
-  factory ProfileClassCubit.createStudent() =>
-      ProfileClassCubit(inject.get())..getProfileClassId();
-
-  Future<void> getProfileClassId() async {
-    try {
-      emit(const ResourceLoading());
-      final classIdResult = await userRepository.getIdMemberClassUser();
-      if (classIdResult != null) {
-        emit(ResourceSuccess(data: classIdResult));
-      }
-    } catch (error) {
-      emit(const ResourceError());
-    }
-  }
+  factory ProfileClassCubit.createStudent() => ProfileClassCubit(inject.get());
 }

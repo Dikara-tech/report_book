@@ -11,21 +11,17 @@ part 'announcements_cubit.freezed.dart';
 
 class AnnouncementsCubit extends Cubit<AnnouncementsState> {
   final AnnouncementRepository _announcementRepository;
-  final UserRepository _userRepository;
   StreamSubscription<List<AnnouncementModel>>? _streamSubscription;
 
-  AnnouncementsCubit(this._announcementRepository, this._userRepository)
+  AnnouncementsCubit(this._announcementRepository)
       : super(AnnouncementsState.defaultState());
 
-  factory AnnouncementsCubit.create() => AnnouncementsCubit(
-        inject.get(),
-        inject.get(),
-      );
+  factory AnnouncementsCubit.create() => AnnouncementsCubit(inject.get());
 
   Future<void> getAnnouncements() async {
     try {
       emit(state.copyWith(isLoading: true));
-      final classId = await _userRepository.getIdMemberClassUser();
+      final classId = await _announcementRepository.getIdMemberClassUser();
       if (classId != null) {
         _onListen(classId);
       } else {
