@@ -71,7 +71,7 @@ class _CreateAnnouncementScreenPageState
               ),
             ),
             Padding(
-              padding: EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(16.0),
               child: CustomTextFieldWidget(
                 textEditingController: _announcementEditController,
                 hintText: 'Detail Annoucement',
