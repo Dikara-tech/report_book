@@ -1,9 +1,9 @@
 part of 'tasks_screen_page.dart';
 
 class _TaskContentListWidget extends StatelessWidget {
-  const _TaskContentListWidget(this.isTeacher);
+  const _TaskContentListWidget(this.isEnableCreateAndUpdate);
 
-  final bool isTeacher;
+  final bool isEnableCreateAndUpdate;
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +51,7 @@ class _TaskContentListWidget extends StatelessWidget {
                     assignName: state.tasks[index].assignName,
                     taskTypeModel: state.tasks[index].taskTypeModel,
                     isDone: state.tasks[index].isDone,
-                    isEnableEdit: isTeacher,
+                    isEnableEdit: isEnableCreateAndUpdate,
                   ),
                 ),
               ),

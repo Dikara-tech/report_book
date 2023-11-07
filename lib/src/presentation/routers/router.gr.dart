@@ -216,16 +216,21 @@ abstract class _$AppRouter extends RootStackRouter {
       final queryParams = routeData.queryParams;
       final args = routeData.argsAs<TaskScreenRouterArgs>(
           orElse: () => TaskScreenRouterArgs(
-                isTeacher: queryParams.getBool(
-                  'isTeacher',
+                isEnableCreateAndEdit: queryParams.getBool(
+                  'isEnableCreateAndEdit',
                   true,
+                ),
+                reportReadOnly: queryParams.getBool(
+                  'reportReadOnly',
+                  false,
                 ),
                 studentId: queryParams.optString('studentId'),
               ));
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: TaskScreenPage(
-          isTeacher: args.isTeacher,
+          isEnableCreateAndEdit: args.isEnableCreateAndEdit,
+          reportReadOnly: args.reportReadOnly,
           studentId: args.studentId,
         ),
       );
@@ -724,17 +729,20 @@ class TaskDetailScreenRouterArgs {
 /// [TaskScreenPage]
 class TaskScreenRouter extends PageRouteInfo<TaskScreenRouterArgs> {
   TaskScreenRouter({
-    bool isTeacher = true,
+    bool isEnableCreateAndEdit = true,
+    bool reportReadOnly = false,
     String? studentId,
     List<PageRouteInfo>? children,
   }) : super(
           TaskScreenRouter.name,
           args: TaskScreenRouterArgs(
-            isTeacher: isTeacher,
+            isEnableCreateAndEdit: isEnableCreateAndEdit,
+            reportReadOnly: reportReadOnly,
             studentId: studentId,
           ),
           rawQueryParams: {
-            'isTeacher': isTeacher,
+            'isEnableCreateAndEdit': isEnableCreateAndEdit,
+            'reportReadOnly': reportReadOnly,
             'studentId': studentId,
           },
           initialChildren: children,
@@ -748,16 +756,19 @@ class TaskScreenRouter extends PageRouteInfo<TaskScreenRouterArgs> {
 
 class TaskScreenRouterArgs {
   const TaskScreenRouterArgs({
-    this.isTeacher = true,
+    this.isEnableCreateAndEdit = true,
+    this.reportReadOnly = false,
     this.studentId,
   });
 
-  final bool isTeacher;
+  final bool isEnableCreateAndEdit;
+
+  final bool reportReadOnly;
 
   final String? studentId;
 
   @override
   String toString() {
-    return 'TaskScreenRouterArgs{isTeacher: $isTeacher, studentId: $studentId}';
+    return 'TaskScreenRouterArgs{isEnableCreateAndEdit: $isEnableCreateAndEdit, reportReadOnly: $reportReadOnly, studentId: $studentId}';
   }
 }
