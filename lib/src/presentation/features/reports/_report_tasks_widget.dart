@@ -23,18 +23,8 @@ class _ReportTasksWidget extends StatelessWidget {
           itemBuilder: (context, index) => ListTile(
             title: Text(state.scores[index].assignedName,
                 style: theme.textTheme.titleLarge),
-            subtitle: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Text('Total Task: ${state.scores[index].totalTask}'),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 4.0),
-                  child: Text(
-                      'Total Task Mapel: ${state.scores[index].totalStudies}'),
-                ),
-              ],
-            ),
+            subtitle: Text(
+                'Total Percentage Done: ${_calculatePercentage(state.scores[index])}%'),
             onTap: () => AutoRouter.of(context).push(TaskScreenRouter(
               studentId: state.scores[index].idTask,
               reportReadOnly: true,
@@ -43,5 +33,11 @@ class _ReportTasksWidget extends StatelessWidget {
         );
       },
     );
+  }
+
+  int _calculatePercentage(ScoreModel scoreModel) {
+    final result =
+        max(0.0, (scoreModel.totalTaskDone / scoreModel.totalTask) * 100);
+    return result.round();
   }
 }
