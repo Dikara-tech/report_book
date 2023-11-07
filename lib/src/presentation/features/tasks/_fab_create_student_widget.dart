@@ -1,13 +1,13 @@
 part of 'tasks_screen_page.dart';
 
 class _FabCreateStudentWidget extends StatelessWidget {
-  const _FabCreateStudentWidget({this.isTeacher = false});
+  const _FabCreateStudentWidget({this.isEnableCreateAndEdit = false});
 
-  final bool isTeacher;
+  final bool isEnableCreateAndEdit;
 
   @override
   Widget build(BuildContext context) {
-    if (isTeacher) {
+    if (isEnableCreateAndEdit) {
       return FloatingActionButton(
         heroTag: 'task',
         onPressed: () {

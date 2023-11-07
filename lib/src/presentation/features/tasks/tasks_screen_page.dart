@@ -12,11 +12,13 @@ part '_fab_create_student_widget.dart';
 @RoutePage()
 class TaskScreenPage extends StatelessWidget {
   const TaskScreenPage({
-    @QueryParam() this.isTeacher = true,
+    @QueryParam() this.isEnableCreateAndEdit = true,
+    @QueryParam() this.reportReadOnly = false,
     @QueryParam() this.studentId,
   });
 
-  final bool isTeacher;
+  final bool isEnableCreateAndEdit;
+  final bool reportReadOnly;
   final String? studentId;
 
   @override
@@ -24,22 +26,24 @@ class TaskScreenPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Student Task'),
-        leading: AutoRouter.of(context).canPop() && isTeacher
+        leading: AutoRouter.of(context).canPop() && isEnableCreateAndEdit
             ? IconButton(
                 onPressed: () => AutoRouter.of(context).pop(),
                 icon: const Icon(Icons.arrow_back),
               )
             : null,
       ),
-      drawer: isTeacher ? const NavBarMenuTeacherWidget() : null,
+      drawer: isEnableCreateAndEdit ? const NavBarMenuTeacherWidget() : null,
       body: MultiBlocProvider(
         providers: [
           Provider(
               create: (context) => TaskListCubit.create(studentId: studentId)),
         ],
-        child: _TaskContentListWidget(isTeacher),
+        child: _TaskContentListWidget(!reportReadOnly),
       ),
-      floatingActionButton: _FabCreateStudentWidget(isTeacher: isTeacher),
+      floatingActionButton: _FabCreateStudentWidget(
+        isEnableCreateAndEdit: isEnableCreateAndEdit,
+      ),
     );
   }
 }

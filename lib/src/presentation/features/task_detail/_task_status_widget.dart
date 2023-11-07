@@ -18,19 +18,21 @@ class _TaskStatusWidget extends StatelessWidget {
               backgroundColor: Color(0xffE3F2FD),
               child: Icon(Icons.timelapse, color: Colors.blue),
             ),
-          if (!isDone) const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.0),
-            child: Text('Task OnGoing'),
-          ),
+          if (!isDone)
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.0),
+              child: Text('Task OnGoing'),
+            ),
           if (isDone)
             const CircleAvatar(
               backgroundColor: Color(0xffE3F2FD),
-              child: Icon(Icons.close, color: Colors.green),
+              child: Icon(Icons.check, color: Colors.green),
             ),
-          if (isDone) const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.0),
-            child: Text('Task Done'),
-          ),
+          if (isDone)
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.0),
+              child: Text('Task Done'),
+            ),
         ],
       ),
     );

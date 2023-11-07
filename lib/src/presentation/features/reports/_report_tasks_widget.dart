@@ -35,8 +35,10 @@ class _ReportTasksWidget extends StatelessWidget {
                 ),
               ],
             ),
-            onTap: () => AutoRouter.of(context)
-                .push(TaskScreenRouter(studentId: state.scores[index].idTask)),
+            onTap: () => AutoRouter.of(context).push(TaskScreenRouter(
+              studentId: state.scores[index].idTask,
+              reportReadOnly: true,
+            )),
           ),
         );
       },
