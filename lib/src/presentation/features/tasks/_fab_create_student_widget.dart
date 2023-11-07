@@ -11,7 +11,7 @@ class _FabCreateStudentWidget extends StatelessWidget {
       return FloatingActionButton(
         heroTag: 'task',
         onPressed: () {
-          AutoRouter.of(context).push(CreateTaskScreenRouter(isEdit: true));
+          AutoRouter.of(context).push(CreateTaskScreenRouter(isEdit: false));
         },
         child: const Icon(Icons.add),
       );
