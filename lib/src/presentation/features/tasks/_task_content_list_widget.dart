@@ -32,7 +32,7 @@ class _TaskContentListWidget extends StatelessWidget {
               child: ListTile(
                 title: Text(state.tasks[index].title),
                 subtitle: Text(
-                  state.tasks[index].assignName,
+                  state.tasks[index].detail,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),
@@ -48,7 +48,6 @@ class _TaskContentListWidget extends StatelessWidget {
                     assignId: state.tasks[index].assignIdUser,
                     titleTask: state.tasks[index].title,
                     detailTask: state.tasks[index].detail,
-                    assignName: state.tasks[index].assignName,
                     taskTypeModel: state.tasks[index].taskTypeModel,
                     isDone: state.tasks[index].isDone,
                     isEnableEdit: isEnableCreateAndUpdate,

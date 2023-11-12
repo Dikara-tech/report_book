@@ -195,7 +195,6 @@ abstract class _$AppRouter extends RootStackRouter {
                   'isDone',
                   false,
                 ),
-                assignName: queryParams.optString('assignName'),
                 detailTask: queryParams.optString('detailTask'),
               ));
       return AutoRoutePage<dynamic>(
@@ -207,7 +206,6 @@ abstract class _$AppRouter extends RootStackRouter {
           taskTypeModel: args.taskTypeModel,
           isEnableEdit: args.isEnableEdit,
           isDone: args.isDone,
-          assignName: args.assignName,
           detailTask: args.detailTask,
         ),
       );
@@ -655,7 +653,6 @@ class TaskDetailScreenRouter extends PageRouteInfo<TaskDetailScreenRouterArgs> {
     TaskTypeModel? taskTypeModel,
     bool isEnableEdit = false,
     bool isDone = false,
-    String? assignName,
     String? detailTask,
     List<PageRouteInfo>? children,
   }) : super(
@@ -667,7 +664,6 @@ class TaskDetailScreenRouter extends PageRouteInfo<TaskDetailScreenRouterArgs> {
             taskTypeModel: taskTypeModel,
             isEnableEdit: isEnableEdit,
             isDone: isDone,
-            assignName: assignName,
             detailTask: detailTask,
           ),
           rawPathParams: {
@@ -679,7 +675,6 @@ class TaskDetailScreenRouter extends PageRouteInfo<TaskDetailScreenRouterArgs> {
             'taskTypeModel': taskTypeModel,
             'isEnableEdit': isEnableEdit,
             'isDone': isDone,
-            'assignName': assignName,
             'detailTask': detailTask,
           },
           initialChildren: children,
@@ -699,7 +694,6 @@ class TaskDetailScreenRouterArgs {
     this.taskTypeModel,
     this.isEnableEdit = false,
     this.isDone = false,
-    this.assignName,
     this.detailTask,
   });
 
@@ -715,13 +709,11 @@ class TaskDetailScreenRouterArgs {
 
   final bool isDone;
 
-  final String? assignName;
-
   final String? detailTask;
 
   @override
   String toString() {
-    return 'TaskDetailScreenRouterArgs{taskId: $taskId, assignId: $assignId, titleTask: $titleTask, taskTypeModel: $taskTypeModel, isEnableEdit: $isEnableEdit, isDone: $isDone, assignName: $assignName, detailTask: $detailTask}';
+    return 'TaskDetailScreenRouterArgs{taskId: $taskId, assignId: $assignId, titleTask: $titleTask, taskTypeModel: $taskTypeModel, isEnableEdit: $isEnableEdit, isDone: $isDone, detailTask: $detailTask}';
   }
 }
 

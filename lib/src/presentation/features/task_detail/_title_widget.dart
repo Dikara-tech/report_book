@@ -11,9 +11,9 @@ class _TitleWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-      child: Text(title ?? 'No Title', style: theme.textTheme.titleLarge),
+    return ListTile(
+      title: const Text('Title'),
+      subtitle: Text(title ?? 'No Title', style: theme.textTheme.titleLarge),
     );
   }
 }

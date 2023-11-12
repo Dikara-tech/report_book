@@ -21,8 +21,8 @@ class _TextFieldAssignedTaskWidgetState
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    textEditingController.text =
-        context.read<TaskFormProvider>().value.assignName;
+    final assignName = context.read<TaskFormProvider>().value.assignName;
+    if (assignName != null) textEditingController.text = assignName;
   }
 
   @override
