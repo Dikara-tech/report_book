@@ -2,6 +2,7 @@ import 'package:dikara_core/dikara_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:report_book/src/presentation/features/task_detail/bloc/edit_detail/edit_task_cubit.dart';
+import 'package:report_book/src/presentation/features/task_detail/bloc/profile_name/profile_name_cubit.dart';
 import 'package:report_book/src/presentation/features/task_detail/provider/checkbox_provider.dart';
 import 'package:report_book/src/presentation/routers/router.dart';
 import 'package:report_book/src/widgets/custom_button_widget.dart';
@@ -17,6 +18,8 @@ part '_checkbox_task_widget.dart';
 
 part '_task_status_widget.dart';
 
+part '_assign_name_task_widget.dart';
+
 @RoutePage()
 class TaskDetailScreenPage extends StatelessWidget {
   const TaskDetailScreenPage({
@@ -26,7 +29,6 @@ class TaskDetailScreenPage extends StatelessWidget {
     @QueryParam() this.taskTypeModel,
     @QueryParam() this.isEnableEdit = false,
     @QueryParam() this.isDone = false,
-    @QueryParam() this.assignName,
     @QueryParam() this.detailTask,
   });
 
@@ -34,7 +36,6 @@ class TaskDetailScreenPage extends StatelessWidget {
   final String assignId;
   final bool isDone;
   final String? titleTask;
-  final String? assignName;
   final String? detailTask;
   final TaskTypeModel? taskTypeModel;
   final bool isEnableEdit;
@@ -48,12 +49,21 @@ class TaskDetailScreenPage extends StatelessWidget {
             return EditTaskCubit.create(studentId: assignId, taskId: taskId);
           },
         ),
-        ChangeNotifierProvider(create: (context) => CheckBoxProvider(isDone))
+        ChangeNotifierProvider(create: (context) => CheckBoxProvider(isDone)),
+        BlocProvider(
+            create: (context) => ProfileNameCubit.create(userId: assignId))
       ],
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Task Detail'),
-          actions: [if (isEnableEdit) const _ButtonDeleteTask()],
+          actions: [
+            if (isEnableEdit) const _ButtonDeleteTask(),
+            if (isEnableEdit)
+              IconButton(
+                onPressed: () => routeToUpdateTask(context),
+                icon: const Icon(Icons.edit),
+              )
+          ],
         ),
         body: BlocListener<EditTaskCubit, ResourceState<void>>(
           listener: (context, state) => state.maybeWhen(
@@ -65,13 +75,16 @@ class TaskDetailScreenPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               _TitleWidget(title: titleTask),
-              _DetailTaskWidget(detailTask: assignName),
+              const Divider(),
+              _DetailTaskWidget(detailTask: detailTask),
+              const Divider(),
+              const _AssignNameTask(),
+              const Divider(),
               if (isEnableEdit) const _CheckBoxTaskWidget(),
               if (!isEnableEdit) _TaskStatusWidget(isDone: isDone),
               if (isEnableEdit)
                 _ButtonSaveWidget(
-                  taskTypeModel: taskTypeModel ?? TaskTypeModel.none,
-                ),
+                    taskTypeModel: taskTypeModel ?? TaskTypeModel.none),
             ],
           ),
         ),
@@ -80,18 +93,11 @@ class TaskDetailScreenPage extends StatelessWidget {
   }
 
   void routeToUpdateTask(BuildContext context) {
-    AutoRouter.of(context).push(
-      CreateTaskScreenRouter(
+    AutoRouter.of(context).popAndPush(CreateTaskScreenRouter(
         isEdit: isEnableEdit,
         taskId: taskId,
         title: titleTask,
-        studentId: assignId,
-        assignedName: assignName,
-        detailTask: detailTask,
-        isTaskDone: isDone,
-        taskTypeModel: taskTypeModel,
-      ),
-    );
+        detailTask: detailTask));
   }
 }
 

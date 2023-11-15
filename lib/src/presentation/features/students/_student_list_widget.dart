@@ -31,6 +31,7 @@ class _StudentListWidget extends StatelessWidget {
                         userId: data[index].id,
                         name: data[index].name,
                         email: data[index].email,
+                        isEditStudent: true,
                       ),
                     );
                   }

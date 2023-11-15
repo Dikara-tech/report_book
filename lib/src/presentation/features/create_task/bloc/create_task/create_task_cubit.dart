@@ -25,6 +25,8 @@ class CreateTaskCubit extends Cubit<ResourceState<void>> {
   Future<void> updateTask(TaskModel taskModel) async {
     try {
       emit(const ResourceLoading());
+      await _taskRepository.updateTitleAndDescriptionTask(taskModel);
+      emit(const ResourceState.success(data: null));
     } catch (e) {
       emit(const ResourceError());
     }
