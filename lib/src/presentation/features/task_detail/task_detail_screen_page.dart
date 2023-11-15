@@ -56,7 +56,14 @@ class TaskDetailScreenPage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Task Detail'),
-          actions: [if (isEnableEdit) const _ButtonDeleteTask()],
+          actions: [
+            if (isEnableEdit) const _ButtonDeleteTask(),
+            if (isEnableEdit)
+              IconButton(
+                onPressed: () => routeToUpdateTask(context),
+                icon: const Icon(Icons.edit),
+              )
+          ],
         ),
         body: BlocListener<EditTaskCubit, ResourceState<void>>(
           listener: (context, state) => state.maybeWhen(
@@ -86,17 +93,11 @@ class TaskDetailScreenPage extends StatelessWidget {
   }
 
   void routeToUpdateTask(BuildContext context) {
-    AutoRouter.of(context).push(
-      CreateTaskScreenRouter(
+    AutoRouter.of(context).popAndPush(CreateTaskScreenRouter(
         isEdit: isEnableEdit,
         taskId: taskId,
         title: titleTask,
-        studentId: assignId,
-        detailTask: detailTask,
-        isTaskDone: isDone,
-        taskTypeModel: taskTypeModel,
-      ),
-    );
+        detailTask: detailTask));
   }
 }
 

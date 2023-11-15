@@ -36,8 +36,11 @@ class _ReportTasksWidget extends StatelessWidget {
   }
 
   int _calculatePercentage(ScoreModel scoreModel) {
-    final result =
-        max(0.0, (scoreModel.totalTaskDone / scoreModel.totalTask) * 100);
-    return result.round();
+    final resultScore = max(
+      0.0,
+      ((scoreModel.totalTaskDone ?? 0.0) / scoreModel.totalTask) * 100,
+    );
+
+    return resultScore.round();
   }
 }

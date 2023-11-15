@@ -28,7 +28,7 @@ class InputStudentCubit extends Cubit<ResourceState<void>> {
     try {
       emit(const ResourceLoading());
       await _userRepository.updateNameUser(userModel);
-      await _taskRepository.changeScoreName(userModel.id, userModel.name);
+      await _taskRepository.updateScoreName(userModel.id, userModel.name);
       emit(const ResourceSuccess(data: null));
     } catch (error) {
       emit(const ResourceState.error());

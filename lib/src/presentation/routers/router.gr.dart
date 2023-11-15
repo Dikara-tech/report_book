@@ -79,6 +79,10 @@ abstract class _$AppRouter extends RootStackRouter {
                 userId: queryParams.optString('userId'),
                 name: queryParams.optString('name'),
                 email: queryParams.optString('email'),
+                isEditStudent: queryParams.getBool(
+                  'isEditStudent',
+                  false,
+                ),
               ));
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -86,6 +90,7 @@ abstract class _$AppRouter extends RootStackRouter {
           userId: args.userId,
           name: args.name,
           email: args.email,
+          isEditStudent: args.isEditStudent,
         ),
       );
     },
@@ -105,7 +110,7 @@ abstract class _$AppRouter extends RootStackRouter {
                 ),
                 isEdit: queryParams.getBool(
                   'isEdit',
-                  true,
+                  false,
                 ),
               ));
       return AutoRoutePage<dynamic>(
@@ -394,6 +399,7 @@ class CreateStudentScreenRouter
     String? userId,
     String? name,
     String? email,
+    bool isEditStudent = false,
     List<PageRouteInfo>? children,
   }) : super(
           CreateStudentScreenRouter.name,
@@ -401,11 +407,13 @@ class CreateStudentScreenRouter
             userId: userId,
             name: name,
             email: email,
+            isEditStudent: isEditStudent,
           ),
           rawQueryParams: {
             'userId': userId,
             'name': name,
             'email': email,
+            'isEditStudent': isEditStudent,
           },
           initialChildren: children,
         );
@@ -421,6 +429,7 @@ class CreateStudentScreenRouterArgs {
     this.userId,
     this.name,
     this.email,
+    this.isEditStudent = false,
   });
 
   final String? userId;
@@ -429,9 +438,11 @@ class CreateStudentScreenRouterArgs {
 
   final String? email;
 
+  final bool isEditStudent;
+
   @override
   String toString() {
-    return 'CreateStudentScreenRouterArgs{userId: $userId, name: $name, email: $email}';
+    return 'CreateStudentScreenRouterArgs{userId: $userId, name: $name, email: $email, isEditStudent: $isEditStudent}';
   }
 }
 
@@ -446,7 +457,7 @@ class CreateTaskScreenRouter extends PageRouteInfo<CreateTaskScreenRouterArgs> {
     String? detailTask,
     TaskTypeModel? taskTypeModel,
     bool isTaskDone = false,
-    bool isEdit = true,
+    bool isEdit = false,
     List<PageRouteInfo>? children,
   }) : super(
           CreateTaskScreenRouter.name,
@@ -488,7 +499,7 @@ class CreateTaskScreenRouterArgs {
     this.detailTask,
     this.taskTypeModel,
     this.isTaskDone = false,
-    this.isEdit = true,
+    this.isEdit = false,
   });
 
   final String? taskId;

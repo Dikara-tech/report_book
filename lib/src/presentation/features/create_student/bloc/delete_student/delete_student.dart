@@ -7,6 +7,8 @@ class DeleteStudentCubit extends Cubit<ResourceState<void>> {
   DeleteStudentCubit(this._userRepository)
       : super(const ResourceState.initial());
 
+  factory DeleteStudentCubit.create() => DeleteStudentCubit(inject.get());
+
   Future<void> deleteUser(String userId) async {
     try {
       emit(const ResourceLoading());

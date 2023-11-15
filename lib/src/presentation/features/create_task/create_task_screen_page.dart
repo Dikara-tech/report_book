@@ -30,7 +30,7 @@ class CreateTaskScreenPage extends StatelessWidget {
     @QueryParam() this.detailTask,
     @QueryParam() this.taskTypeModel,
     @QueryParam() this.isTaskDone = false,
-    @QueryParam() this.isEdit = true,
+    @QueryParam() this.isEdit = false,
   });
 
   final String? taskId;
@@ -93,9 +93,9 @@ class _ContentCreateTask extends StatelessWidget {
       child: ListView(
         children: [
           const _TextFieldTitleWidget(),
-          const _TextFieldAssignedTaskWidget(),
+          if (!isEdit) const _TextFieldAssignedTaskWidget(),
           const _TextFieldDetailTaskWidget(),
-          const _RadioTaskWidget(),
+          if (!isEdit) const _RadioTaskWidget(),
           if (!isEdit) const _ButtonCreateTaskWidget(),
           if (isEdit) const _ButtonUpdateTaskWidget()
         ],
