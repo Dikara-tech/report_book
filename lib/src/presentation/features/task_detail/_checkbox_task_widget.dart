@@ -9,7 +9,7 @@ class _CheckBoxTaskWidget extends StatelessWidget {
       valueListenable: context.read<CheckBoxProvider>(),
       builder: (context, value, child) => CheckboxListTile(
         value: value,
-        title: const Text('Task Done'),
+        title: const Text('Tugas Selesai'),
         onChanged: (value) {
           context.read<CheckBoxProvider>().changeCheckBox(value ?? false);
         },

@@ -10,7 +10,7 @@ class _ButtonUpdateTaskWidget extends StatelessWidget {
     return SizedBox(
       width: sizeWidth,
       child: CustomButtonWidget(
-        titleButton: 'Update Task',
+        titleButton: 'Ubah Tugas',
         onAction: () {
           final taskModel = context.read<TaskFormProvider>().value;
           context.read<CreateTaskCubit>().updateTask(taskModel);

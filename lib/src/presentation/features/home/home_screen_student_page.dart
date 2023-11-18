@@ -37,11 +37,11 @@ class HomeScreenStudentPage extends StatelessWidget {
             ),
             NavigationDestination(
               icon: Icon(Icons.message_outlined),
-              label: 'Message',
+              label: 'Pesan',
             ),
             NavigationDestination(
               icon: Icon(Icons.calendar_month_outlined),
-              label: 'Tasks',
+              label: 'Tugas',
             ),
             NavigationDestination(
               icon: Icon(Icons.person_outline),

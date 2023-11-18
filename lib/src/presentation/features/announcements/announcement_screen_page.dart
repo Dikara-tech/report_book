@@ -40,7 +40,7 @@ class _AnnouncementScreenPageState extends State<AnnouncementScreenPage> {
     final theme = Theme.of(context);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Annoucements')),
+      appBar: AppBar(title: const Text('Pengumuman')),
       drawer: widget.isTeacher ? const NavBarMenuTeacherWidget() : null,
       body: BlocProvider.value(
         value: _deleteAnnouncementCubit,

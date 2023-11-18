@@ -30,7 +30,7 @@ class _TextingWidgetState extends State<_TextingWidget> {
             child: SizedBox(
               height: 50.0,
               child: CustomTextFieldWidget(
-                hintText: 'Input Text',
+                hintText: 'Masukkan kata',
                 textEditingController: _textEditingController,
               ),
             ),

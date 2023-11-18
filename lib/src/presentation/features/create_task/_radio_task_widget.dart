@@ -17,7 +17,7 @@ class _RadioTaskWidget extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Text(
-              'Task Type',
+              'Tipe Tugas',
               style: theme.textTheme.titleSmall,
             ),
           ),

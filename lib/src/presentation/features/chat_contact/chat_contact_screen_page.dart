@@ -18,7 +18,7 @@ class ChatContactScreenPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Search Contact'),
+        title: const Text('Cari Kontak'),
       ),
       body: MultiBlocProvider(providers: [
         BlocProvider(

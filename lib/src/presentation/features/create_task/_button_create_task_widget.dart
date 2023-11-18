@@ -10,7 +10,7 @@ class _ButtonCreateTaskWidget extends StatelessWidget {
     return SizedBox(
       width: sizeWidth,
       child: CustomButtonWidget(
-        titleButton: 'Create Task',
+        titleButton: 'Buat Tugas',
         onAction: () {
           final taskModel = context.read<TaskFormProvider>().value;
           context.read<CreateTaskCubit>().crateTask(taskModel);

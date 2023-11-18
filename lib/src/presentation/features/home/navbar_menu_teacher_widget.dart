@@ -22,7 +22,7 @@ class _NavBarMenuTeacherWidgetState extends State<NavBarMenuTeacherWidget> {
         children: [
           ListTile(
             leading: const Icon(Icons.school_outlined),
-            title: const Text('Student'),
+            title: const Text('Siswa'),
             onTap: () async {
               await AutoRouter.of(context).pop();
               if (mounted) {
@@ -32,7 +32,7 @@ class _NavBarMenuTeacherWidgetState extends State<NavBarMenuTeacherWidget> {
           ),
           ListTile(
             leading: const Icon(Icons.bar_chart),
-            title: const Text('Report task'),
+            title: const Text('Report Tugas'),
             onTap: () async {
               await AutoRouter.of(context).pop();
               if (mounted) {
@@ -43,7 +43,7 @@ class _NavBarMenuTeacherWidgetState extends State<NavBarMenuTeacherWidget> {
           ),
           ListTile(
             leading: const Icon(Icons.message_outlined),
-            title: const Text('Message'),
+            title: const Text('Pesan'),
             onTap: () async {
               await AutoRouter.of(context).pop();
               if (mounted) {
@@ -54,7 +54,7 @@ class _NavBarMenuTeacherWidgetState extends State<NavBarMenuTeacherWidget> {
           ),
           ListTile(
             leading: const Icon(Icons.calendar_month_outlined),
-            title: const Text('Tasks'),
+            title: const Text('Tugas'),
             onTap: () async {
               await AutoRouter.of(context).pop();
               if (mounted) {
@@ -64,7 +64,7 @@ class _NavBarMenuTeacherWidgetState extends State<NavBarMenuTeacherWidget> {
           ),
           ListTile(
             leading: const Icon(Icons.notifications_outlined),
-            title: const Text('Announcement'),
+            title: const Text('Pengumuman'),
             onTap: () async {
               await AutoRouter.of(context).pop();
               if (mounted) {

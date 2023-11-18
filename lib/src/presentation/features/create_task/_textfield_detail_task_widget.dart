@@ -30,7 +30,7 @@ class _TextFieldDetailTaskWidgetState
       padding: const EdgeInsets.all(16.0),
       child: CustomTextFieldWidget(
         textEditingController: _textEditingController,
-        hintText: 'Detail Task',
+        hintText: 'Detail Tugas',
         maxLines: 5,
         onChange: (value) {
           context.read<TaskFormProvider>().onChangeTaskDetail(value);

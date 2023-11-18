@@ -8,7 +8,7 @@ class _TextFieldStudentClassWidget extends StatelessWidget {
     return const Padding(
       padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
       child: CustomTextFieldWidget(
-        hintText: 'Choose Class Student',
+        hintText: 'Pilih Kelas',
       ),
     );
   }

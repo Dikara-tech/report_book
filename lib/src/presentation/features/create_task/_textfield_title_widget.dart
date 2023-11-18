@@ -34,7 +34,7 @@ class _TextFieldTitleWidgetState extends State<_TextFieldTitleWidget> {
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: CustomTextFieldWidget(
         textEditingController: _textEditingController,
-        hintText: 'Title Task',
+        hintText: 'Judul Tugas',
         onChange: (value) {
           context.read<TaskFormProvider>().onChangeTaskTitle(value);
         },

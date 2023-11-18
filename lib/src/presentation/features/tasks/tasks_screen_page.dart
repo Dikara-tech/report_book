@@ -25,7 +25,7 @@ class TaskScreenPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Student Task'),
+        title: const Text('Tugas Siswa'),
         leading: AutoRouter.of(context).canPop() && isEnableCreateAndEdit
             ? IconButton(
                 onPressed: () => AutoRouter.of(context).pop(),

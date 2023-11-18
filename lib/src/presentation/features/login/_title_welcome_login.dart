@@ -13,7 +13,7 @@ class _TitleWelcomeLogin extends StatelessWidget {
         vertical: 16.0,
       ),
       child: Text(
-        'Welcome',
+        'Selamat Datang',
         style: theme.textTheme.headlineLarge
             ?.copyWith(fontWeight: FontWeight.bold)
             .copyWith(color: theme.colorScheme.primaryContainer),

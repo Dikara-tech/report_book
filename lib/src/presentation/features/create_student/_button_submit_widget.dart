@@ -19,11 +19,11 @@ class _ButtonSubmitWidget extends StatelessWidget {
         builder: (context, state) => state.maybeWhen(
             orElse: () => CustomButtonWidget(
                 titleButton:
-                    idUser == null ? 'Register Student' : 'Update Student',
+                    idUser == null ? 'Daftarkan Siswa' : 'Ubah Data Siswa',
                 onAction: onTapAction),
             loading: (data) => CustomButtonWidget(
                 titleButton:
-                    idUser == null ? 'Register Student' : 'Update Student',
+                    idUser == null ? 'Daftarkan Siswa' : 'Ubah Data Siswa',
                 onAction: null)),
       ),
     );

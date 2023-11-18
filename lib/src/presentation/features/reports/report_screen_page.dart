@@ -18,7 +18,7 @@ class ReportScreenPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Report')),
+      appBar: AppBar(title: const Text('Laporan')),
       drawer: const NavBarMenuTeacherWidget(),
       body: BlocProvider(
         create: (context) => ReportsCubit.create(),

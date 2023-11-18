@@ -7,7 +7,7 @@ class _CircleImageProfileWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return CircleAvatar(
       radius: 50.0,
-      child: RandomAvatar('saytoonz'),
+      child: RandomAvatar('Budi'),
     );
   }
 }

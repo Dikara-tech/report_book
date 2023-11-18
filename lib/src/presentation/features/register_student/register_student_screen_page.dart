@@ -17,7 +17,7 @@ class RegisterStudentScreenPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Register Student'),
+        title: const Text('Daftarkan Siswa'),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

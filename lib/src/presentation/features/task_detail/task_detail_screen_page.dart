@@ -55,7 +55,7 @@ class TaskDetailScreenPage extends StatelessWidget {
       ],
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Task Detail'),
+          title: const Text('Detail Tugas'),
           actions: [
             if (isEnableEdit) const _ButtonDeleteTask(),
             if (isEnableEdit)
@@ -115,8 +115,8 @@ class _ButtonDeleteTask extends StatelessWidget {
   void deleteTask(BuildContext context) {
     GoSimpleDialog.showDialog(
       context,
-      title: 'Delete Task',
-      message: 'will you delete task?',
+      title: 'Hapus Tugas',
+      message: 'yakin ingin menghapus tugas?',
       onConfirm: () {
         context.read<EditTaskCubit>().deleteTask();
       },

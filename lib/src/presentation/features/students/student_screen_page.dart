@@ -16,7 +16,7 @@ class StudentsScreenPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Students')),
+      appBar: AppBar(title: const Text('Siswa')),
       drawer: const NavBarMenuTeacherWidget(),
       body: MultiProvider(
         providers: [Provider(create: (context) => StudentListBloc.create())],

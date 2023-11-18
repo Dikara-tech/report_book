@@ -21,7 +21,7 @@ class _TaskStatusWidget extends StatelessWidget {
           if (!isDone)
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.0),
-              child: Text('Task OnGoing'),
+              child: Text('Tugas Dikerjakan'),
             ),
           if (isDone)
             const CircleAvatar(
@@ -31,7 +31,7 @@ class _TaskStatusWidget extends StatelessWidget {
           if (isDone)
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.0),
-              child: Text('Task Done'),
+              child: Text('Tugas Selesai'),
             ),
         ],
       ),

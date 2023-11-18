@@ -12,7 +12,7 @@ class _TitleWidget extends StatelessWidget {
     final theme = Theme.of(context);
 
     return ListTile(
-      title: const Text('Title'),
+      title: const Text('Judul'),
       subtitle: Text(title ?? 'No Title', style: theme.textTheme.titleLarge),
     );
   }

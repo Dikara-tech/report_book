@@ -19,11 +19,11 @@ class _MetricStudentTaskWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           _TaskValueWidget(
-            title: 'Total Task Done',
+            title: 'Total Tugas Selesai',
             totalValue: totalTaskDone,
           ),
           _TaskValueWidget(
-            title: 'Total Task',
+            title: 'Total Tugas',
             totalValue: totalTask,
           )
         ],
