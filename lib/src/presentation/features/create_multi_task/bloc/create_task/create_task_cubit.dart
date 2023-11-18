@@ -22,19 +22,6 @@ class CreateTaskCubit extends Cubit<ResourceState<void>> {
     }
   }
 
-  Future<void> createMultiTask(TaskModel taskModel) async {
-    try {
-      emit(const ResourceLoading());
-      final newTaskModel = taskModel.copyWith(
-        createdAt: DateTime.now().millisecondsSinceEpoch,
-      );
-      await _taskRepository.createTask(newTaskModel);
-      emit(const ResourceSuccess(data: null));
-    } catch (error) {
-      emit(const ResourceError());
-    }
-  }
-
   Future<void> updateTask(TaskModel taskModel) async {
     try {
       emit(const ResourceLoading());

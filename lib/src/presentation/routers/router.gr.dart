@@ -72,6 +72,39 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const CreateAnnouncementScreenPage(),
       );
     },
+    CreateMultiTaskScreenRouter.name: (routeData) {
+      final queryParams = routeData.queryParams;
+      final args = routeData.argsAs<CreateMultiTaskScreenRouterArgs>(
+          orElse: () => CreateMultiTaskScreenRouterArgs(
+                taskId: queryParams.optString('taskId'),
+                studentId: queryParams.optString('studentId'),
+                title: queryParams.optString('title'),
+                assignedName: queryParams.optString('assignedName'),
+                detailTask: queryParams.optString('detailTask'),
+                taskTypeModel: queryParams.get('taskTypeModel'),
+                isTaskDone: queryParams.getBool(
+                  'isTaskDone',
+                  false,
+                ),
+                isEdit: queryParams.getBool(
+                  'isEdit',
+                  false,
+                ),
+              ));
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: CreateMultiTaskScreenPage(
+          taskId: args.taskId,
+          studentId: args.studentId,
+          title: args.title,
+          assignedName: args.assignedName,
+          detailTask: args.detailTask,
+          taskTypeModel: args.taskTypeModel,
+          isTaskDone: args.isTaskDone,
+          isEdit: args.isEdit,
+        ),
+      );
+    },
     CreateStudentScreenRouter.name: (routeData) {
       final queryParams = routeData.queryParams;
       final args = routeData.argsAs<CreateStudentScreenRouterArgs>(
@@ -389,6 +422,85 @@ class CreateAnnouncementScreenRouter extends PageRouteInfo<void> {
   static const String name = 'CreateAnnouncementScreenRouter';
 
   static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [CreateMultiTaskScreenPage]
+class CreateMultiTaskScreenRouter
+    extends PageRouteInfo<CreateMultiTaskScreenRouterArgs> {
+  CreateMultiTaskScreenRouter({
+    String? taskId,
+    String? studentId,
+    String? title,
+    String? assignedName,
+    String? detailTask,
+    TaskTypeModel? taskTypeModel,
+    bool isTaskDone = false,
+    bool isEdit = false,
+    List<PageRouteInfo>? children,
+  }) : super(
+          CreateMultiTaskScreenRouter.name,
+          args: CreateMultiTaskScreenRouterArgs(
+            taskId: taskId,
+            studentId: studentId,
+            title: title,
+            assignedName: assignedName,
+            detailTask: detailTask,
+            taskTypeModel: taskTypeModel,
+            isTaskDone: isTaskDone,
+            isEdit: isEdit,
+          ),
+          rawQueryParams: {
+            'taskId': taskId,
+            'studentId': studentId,
+            'title': title,
+            'assignedName': assignedName,
+            'detailTask': detailTask,
+            'taskTypeModel': taskTypeModel,
+            'isTaskDone': isTaskDone,
+            'isEdit': isEdit,
+          },
+          initialChildren: children,
+        );
+
+  static const String name = 'CreateMultiTaskScreenRouter';
+
+  static const PageInfo<CreateMultiTaskScreenRouterArgs> page =
+      PageInfo<CreateMultiTaskScreenRouterArgs>(name);
+}
+
+class CreateMultiTaskScreenRouterArgs {
+  const CreateMultiTaskScreenRouterArgs({
+    this.taskId,
+    this.studentId,
+    this.title,
+    this.assignedName,
+    this.detailTask,
+    this.taskTypeModel,
+    this.isTaskDone = false,
+    this.isEdit = false,
+  });
+
+  final String? taskId;
+
+  final String? studentId;
+
+  final String? title;
+
+  final String? assignedName;
+
+  final String? detailTask;
+
+  final TaskTypeModel? taskTypeModel;
+
+  final bool isTaskDone;
+
+  final bool isEdit;
+
+  @override
+  String toString() {
+    return 'CreateMultiTaskScreenRouterArgs{taskId: $taskId, studentId: $studentId, title: $title, assignedName: $assignedName, detailTask: $detailTask, taskTypeModel: $taskTypeModel, isTaskDone: $isTaskDone, isEdit: $isEdit}';
+  }
 }
 
 /// generated route for
