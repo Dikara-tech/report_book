@@ -12,8 +12,8 @@ class _ButtonCreateTaskWidget extends StatelessWidget {
       child: CustomButtonWidget(
         titleButton: 'Buat Tugas',
         onAction: () {
-          // final taskModel = context.read<TaskFormProvider>().value;
-          // context.read<CreateTaskCubit>().crateTask(taskModel);
+          final taskModel = context.read<TaskFormProvider>().value;
+          context.read<CreateTaskCubit>().createMultiTask(taskModel);
         },
       ),
     );
