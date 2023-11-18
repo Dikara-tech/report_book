@@ -14,7 +14,7 @@ class _ButtonSaveWidget extends StatelessWidget {
       child: BlocBuilder<EditTaskCubit, ResourceState<void>>(
         builder: (context, state) => state.maybeWhen(
           orElse: () => CustomButtonWidget(
-            titleButton: 'Update Task',
+            titleButton: 'Ubah Tugas',
             onAction: () {
               final checkBox = context.read<CheckBoxProvider>().value;
               context
@@ -23,7 +23,7 @@ class _ButtonSaveWidget extends StatelessWidget {
             },
           ),
           loading: (data) => const CustomButtonWidget(
-            titleButton: 'Update Task',
+            titleButton: 'Ubah Tugas',
             onAction: null,
           ),
         ),

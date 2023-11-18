@@ -9,14 +9,14 @@ class _TextParentNameWidget extends StatelessWidget {
 
     return ListTile(
       title: Text(
-        'Parent Name',
+        'Nama Orang Tua',
         style: theme.textTheme.titleSmall,
       ),
       subtitle: BlocBuilder<ProfileCubit, ResourceState<UserModel>>(
         builder: (context, state) => state.maybeWhen(
           orElse: () => const SizedBox.shrink(),
           success: (code, message, data) => Text(
-            data.parent ?? 'No Parent Name',
+            data.parent ?? 'Tidak ada Nama Orang Tua',
             style: theme.textTheme.titleLarge
                 ?.copyWith(fontWeight: FontWeight.bold),
           ),

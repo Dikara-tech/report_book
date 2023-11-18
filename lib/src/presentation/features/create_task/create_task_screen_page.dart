@@ -45,7 +45,7 @@ class CreateTaskScreenPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Create Task')),
+      appBar: AppBar(title: const Text('Buat Tugas')),
       body: MultiProvider(
         providers: [
           ChangeNotifierProvider(
@@ -83,7 +83,7 @@ class _ContentCreateTask extends StatelessWidget {
         error: (code, message, stacktrace, data) => SnackBar(
           backgroundColor: Colors.black,
           content: Text(
-            'Failed create Task',
+            'Gagal membuat Tugas',
             style: theme.textTheme.bodySmall?.copyWith(
               color: Colors.white,
             ),

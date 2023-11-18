@@ -48,7 +48,7 @@ class _ChatDetailScreenPageState extends State<ChatDetailScreenPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.senderName ?? 'No Name'),
+        title: Text(widget.senderName ?? 'Tidak ada nama'),
       ),
       body: SafeArea(
         child: BlocProvider.value(

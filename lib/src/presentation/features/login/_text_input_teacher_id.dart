@@ -11,7 +11,7 @@ class _TextInputTeacher extends StatelessWidget {
         initialData: null,
         stream: context.read<LoginForm>().watchError,
         builder: (context, snapshot) => CustomTextFieldWidget(
-          hintText: 'Input TeacherID/UserId',
+          hintText: 'Input ID Guru/Siswa',
           maxLines: 1,
           errorText: errorText(snapshot.data),
           textInputType: TextInputType.emailAddress,
@@ -27,7 +27,7 @@ class _TextInputTeacher extends StatelessWidget {
     final loginState = loginFormState;
     if (loginState != null) {
       if (loginState is LoginFormEmptyState) {
-        return 'fill the blank';
+        return 'input text';
       }
     }
 

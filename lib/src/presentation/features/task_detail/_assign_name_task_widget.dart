@@ -7,7 +7,7 @@ class _AssignNameTask extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: const Text('Name'),
+      title: const Text('Nama'),
       subtitle: BlocBuilder<ProfileNameCubit, ResourceState<String?>>(
         builder: (context, state) => state.maybeWhen(
           orElse: () => const SizedBox.shrink(),

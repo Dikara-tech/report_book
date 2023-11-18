@@ -44,8 +44,8 @@ class CreateStudentScreenPage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: isEditStudent
-              ? const Text('Update Student')
-              : const Text('Create Student'),
+              ? const Text('Ubah Data Siswa')
+              : const Text('Buat Siswa'),
           actions: [
             if (isEditStudent && userId != null)
               _IconDeleteButton(userId: userId!)

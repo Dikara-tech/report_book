@@ -7,7 +7,7 @@ class _ButtonCreateWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Padding(
       padding: EdgeInsets.symmetric(horizontal: 16.0),
-      child: CustomButtonWidget(titleButton: 'Create Student'),
+      child: CustomButtonWidget(titleButton: 'Buat Siswa'),
     );
   }
 }

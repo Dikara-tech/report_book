@@ -39,7 +39,7 @@ class _TextEmailWidgetState extends State<_TextEmailWidget> {
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: CustomTextFieldWidget(
         textEditingController: _textEditingController,
-        hintText: 'Input Email Student',
+        hintText: 'Masukkan email siswa',
         textInputType: TextInputType.emailAddress,
         errorText: registerForm.errorTextEmail,
         isReadOnly: _disableEmail,

@@ -8,7 +8,7 @@ class _TextNameWidget extends StatelessWidget {
     final theme = Theme.of(context);
 
     return ListTile(
-      title: Text('Name', style: theme.textTheme.titleSmall),
+      title: Text('Nama', style: theme.textTheme.titleSmall),
       subtitle: BlocBuilder<ProfileCubit, ResourceState<UserModel>>(
         builder: (context, state) => state.maybeWhen(
           orElse: () => const SizedBox.shrink(),

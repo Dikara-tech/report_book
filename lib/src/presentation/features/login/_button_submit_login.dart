@@ -20,7 +20,7 @@ class _ButtonSubmitLogin extends StatelessWidget {
             SnackBar(
               backgroundColor: Colors.black,
               content: Text(
-                'User not Found',
+                'User tidak ditemukan',
                 style: theme.textTheme.bodySmall?.copyWith(
                   color: Colors.white,
                 ),

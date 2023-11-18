@@ -24,7 +24,8 @@ class _ReportTasksWidget extends StatelessWidget {
             title: Text(state.scores[index].assignedName,
                 style: theme.textTheme.titleLarge),
             subtitle: Text(
-                'Total Percentage Done: ${_calculatePercentage(state.scores[index])}%'),
+                'Persentase selesai: ${_calculatePercentage(state.scores[index])
+                }%'),
             onTap: () => AutoRouter.of(context).push(TaskScreenRouter(
               studentId: state.scores[index].idTask,
               reportReadOnly: true,

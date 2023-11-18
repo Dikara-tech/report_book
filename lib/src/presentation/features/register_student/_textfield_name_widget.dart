@@ -8,7 +8,7 @@ class _TextFieldNameWidget extends StatelessWidget {
     return const Padding(
       padding: EdgeInsets.symmetric(horizontal: 16.0),
       child: CustomTextFieldWidget(
-        hintText: 'Name Student',
+        hintText: 'Nama Siswa',
       ),
     );
   }

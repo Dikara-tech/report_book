@@ -43,7 +43,7 @@ class _CreateAnnouncementScreenPageState
     final width = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Annoucement Detail')),
+      appBar: AppBar(title: const Text('Detail Pengumuman')),
       body: BlocListener<CrateAnnouncementCubit, ResourceState<void>>(
         bloc: _crateAnnouncementCubit,
         listener: (context, state) => state.when(
@@ -52,7 +52,7 @@ class _CreateAnnouncementScreenPageState
           error: (code, message, stacktrace, data) => SnackBar(
             backgroundColor: Colors.black,
             content: Text(
-              'Failed create user',
+              'Gagal membuat user',
               style: theme.textTheme.bodySmall?.copyWith(
                 color: Colors.white,
               ),
@@ -67,21 +67,21 @@ class _CreateAnnouncementScreenPageState
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: CustomTextFieldWidget(
                 textEditingController: _titleEditController,
-                hintText: 'Title Annoucement',
+                hintText: 'Judul Pengumuman',
               ),
             ),
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: CustomTextFieldWidget(
                 textEditingController: _announcementEditController,
-                hintText: 'Detail Annoucement',
+                hintText: 'Detail Pengumuman',
                 maxLines: 5,
               ),
             ),
             SizedBox(
               width: width,
               child: CustomButtonWidget(
-                titleButton: 'Create Announcement',
+                titleButton: 'Buat Pengumuman',
                 onAction: () {
                   _crateAnnouncementCubit.createAnnouncement(
                     _titleEditController.text,

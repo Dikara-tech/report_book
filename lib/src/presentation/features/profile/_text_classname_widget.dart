@@ -8,9 +8,9 @@ class _TextClassNameWidget extends StatelessWidget {
     final theme = Theme.of(context);
 
     return ListTile(
-      title: Text('Class', style: theme.textTheme.titleSmall),
+      title: Text('Kelas', style: theme.textTheme.titleSmall),
       subtitle: Text(
-        'Class Name',
+        'Nama Kelas',
         style:
             theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
       ),

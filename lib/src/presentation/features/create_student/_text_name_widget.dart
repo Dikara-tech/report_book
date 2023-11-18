@@ -37,7 +37,7 @@ class _TextNameWidgetState extends State<_TextNameWidget> {
       padding: const EdgeInsets.all(16.0),
       child: CustomTextFieldWidget(
         textEditingController: _textEditingController,
-        hintText: 'Input Name',
+        hintText: 'Masukkan Nama',
         errorText: registerForm.errorText,
         onChange: (value) {
           _textEditingController.text = value;
