@@ -28,7 +28,7 @@ class CreateTaskCubit extends Cubit<ResourceState<void>> {
       final newTaskModel = taskModel.copyWith(
         createdAt: DateTime.now().millisecondsSinceEpoch,
       );
-      await _taskRepository.createTask(newTaskModel);
+      await _taskRepository.createMultiTask(newTaskModel);
       emit(const ResourceSuccess(data: null));
     } catch (error) {
       emit(const ResourceError());
