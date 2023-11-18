@@ -1,4 +1,4 @@
-part of 'create_task_screen_page.dart';
+part of 'create_multi_task_screen_page.dart';
 
 class _ButtonCreateTaskWidget extends StatelessWidget {
   const _ButtonCreateTaskWidget();
@@ -10,10 +10,10 @@ class _ButtonCreateTaskWidget extends StatelessWidget {
     return SizedBox(
       width: sizeWidth,
       child: CustomButtonWidget(
-        titleButton: 'Buat Hafalan',
+        titleButton: 'Buat Tugas',
         onAction: () {
           final taskModel = context.read<TaskFormProvider>().value;
-          context.read<CreateTaskCubit>().crateTask(taskModel);
+          context.read<CreateTaskCubit>().createMultiTask(taskModel);
         },
       ),
     );

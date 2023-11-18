@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:report_book/src/presentation/features/create_task/bloc/create_task/create_task_cubit.dart';
 import 'package:report_book/src/presentation/features/create_task/providers/form/task_form_provider.dart';
-import 'package:report_book/src/presentation/routers/router.dart';
 import 'package:report_book/src/widgets/custom_button_widget.dart';
 import 'package:report_book/src/widgets/custom_text_field_widget.dart';
 import 'package:report_book_core/report_book_core.dart';
@@ -16,13 +15,11 @@ part '_textfield_detail_task_widget.dart';
 
 part '_radio_task_widget.dart';
 
-part '_textfield_assigned_task_widget.dart';
-
 part '_button_update_task_widget.dart';
 
 @RoutePage()
-class CreateTaskScreenPage extends StatelessWidget {
-  const CreateTaskScreenPage({
+class CreateMultiTaskScreenPage extends StatelessWidget {
+  const CreateMultiTaskScreenPage({
     @QueryParam() this.taskId,
     @QueryParam() this.studentId,
     @QueryParam() this.title,
@@ -45,17 +42,17 @@ class CreateTaskScreenPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Buat Tugas Hafalan')),
+      appBar: AppBar(title: const Text('Buat Tugas')),
       body: MultiProvider(
         providers: [
           ChangeNotifierProvider(
             create: (context) => TaskFormProvider.create(
               taskId: taskId,
-              assignId: studentId,
+              assignId: '',
               title: title,
               detail: detailTask,
               assignName: assignedName,
-              taskTypeModel: TaskTypeModel.hafalan,
+              taskTypeModel: taskTypeModel,
               isDone: isTaskDone,
             ),
           ),
@@ -93,10 +90,9 @@ class _ContentCreateTask extends StatelessWidget {
       child: ListView(
         children: [
           const _TextFieldTitleWidget(),
-          if (!isEdit) const _TextFieldAssignedTaskWidget(),
           const _TextFieldDetailTaskWidget(),
+          if (!isEdit) const _RadioTaskWidget(),
           if (!isEdit) const _ButtonCreateTaskWidget(),
-          if (isEdit) const _ButtonUpdateTaskWidget()
         ],
       ),
     );
