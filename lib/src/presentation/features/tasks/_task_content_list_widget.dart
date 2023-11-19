@@ -23,6 +23,7 @@ class _TaskContentListWidget extends StatelessWidget {
 
         return ListView.separated(
           itemCount: state.tasks.length,
+          padding: const EdgeInsets.symmetric(vertical: 12.0),
           separatorBuilder: (context, index) =>
               const Padding(padding: EdgeInsets.symmetric(vertical: 4.0)),
           itemBuilder: (context, index) => Padding(
