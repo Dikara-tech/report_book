@@ -261,6 +261,10 @@ abstract class _$AppRouter extends RootStackRouter {
                   false,
                 ),
                 studentId: queryParams.optString('studentId'),
+                isStudent: queryParams.getBool(
+                  'isStudent',
+                  false,
+                ),
               ));
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -268,6 +272,7 @@ abstract class _$AppRouter extends RootStackRouter {
           isEnableCreateAndEdit: args.isEnableCreateAndEdit,
           reportReadOnly: args.reportReadOnly,
           studentId: args.studentId,
+          isStudent: args.isStudent,
         ),
       );
     },
@@ -847,6 +852,7 @@ class TaskScreenRouter extends PageRouteInfo<TaskScreenRouterArgs> {
     bool isEnableCreateAndEdit = true,
     bool reportReadOnly = false,
     String? studentId,
+    bool isStudent = false,
     List<PageRouteInfo>? children,
   }) : super(
           TaskScreenRouter.name,
@@ -854,11 +860,13 @@ class TaskScreenRouter extends PageRouteInfo<TaskScreenRouterArgs> {
             isEnableCreateAndEdit: isEnableCreateAndEdit,
             reportReadOnly: reportReadOnly,
             studentId: studentId,
+            isStudent: isStudent,
           ),
           rawQueryParams: {
             'isEnableCreateAndEdit': isEnableCreateAndEdit,
             'reportReadOnly': reportReadOnly,
             'studentId': studentId,
+            'isStudent': isStudent,
           },
           initialChildren: children,
         );
@@ -874,6 +882,7 @@ class TaskScreenRouterArgs {
     this.isEnableCreateAndEdit = true,
     this.reportReadOnly = false,
     this.studentId,
+    this.isStudent = false,
   });
 
   final bool isEnableCreateAndEdit;
@@ -882,8 +891,10 @@ class TaskScreenRouterArgs {
 
   final String? studentId;
 
+  final bool isStudent;
+
   @override
   String toString() {
-    return 'TaskScreenRouterArgs{isEnableCreateAndEdit: $isEnableCreateAndEdit, reportReadOnly: $reportReadOnly, studentId: $studentId}';
+    return 'TaskScreenRouterArgs{isEnableCreateAndEdit: $isEnableCreateAndEdit, reportReadOnly: $reportReadOnly, studentId: $studentId, isStudent: $isStudent}';
   }
 }
